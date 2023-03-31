@@ -9,11 +9,13 @@ Description: Automatically generate R package skeletons from 'application
     (OAS)'. The skeletons implement best practices to streamline package
     development.
 License: MIT + file LICENSE
+URL: https://github.com/jonthegeek/api2r,
+    https://jonthegeek.github.io/api2r/
+BugReports: https://github.com/jonthegeek/api2r/issues
 Suggests: 
+    covr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-URL: https://github.com/jonthegeek/api2r
-BugReports: https://github.com/jonthegeek/api2r/issues

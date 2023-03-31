@@ -16,6 +16,10 @@ knitr::opts_chunk$set(
 # api2r
 
 <!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN status](https://www.r-pkg.org/badges/version/api2r)](https://CRAN.R-project.org/package=api2r)
+[![Codecov test coverage](https://codecov.io/gh/jonthegeek/api2r/branch/main/graph/badge.svg)](https://app.codecov.io/gh/jonthegeek/api2r?branch=main)
+[![R-CMD-check](https://github.com/jonthegeek/api2r/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jonthegeek/api2r/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 Automatically generate R package skeletons from 'application programming interfaces (APIs)' that follow the 'OpenAPI Specification (OAS)'. The skeletons implement best practices to streamline package development.
