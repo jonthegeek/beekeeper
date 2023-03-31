@@ -1,0 +1,38 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# api2r
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Automatically generate R package skeletons from 'application programming interfaces (APIs)' that follow the 'OpenAPI Specification (OAS)'. The skeletons implement best practices to streamline package development.
+
+## Installation
+
+You can install the development version of api2r from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("jonthegeek/api2r")
+```
+
+## Usage
+
+Add usage information and examples here.
+
+## Code of Conduct
+
+Please note that the api2r project is released with a [Contributor Code of Conduct](https://jonthegeek.github.io/api2r/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
