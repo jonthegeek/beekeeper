@@ -1,5 +1,6 @@
 ^api2r\.Rproj$
 ^\.Rproj\.user$
+^README\.Rmd$
 ^LICENSE\.md$
 ^cran-comments\.md$
 ^\.github$
