@@ -10,6 +10,12 @@
     (OAS). The skeletons implement best practices to streamline package
     development.">
 <title>Rapidly Scaffold API Client Packages • api2r</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -19,6 +25,7 @@
     programming interfaces (APIs) that follow the OpenAPI Specification
     (OAS). The skeletons implement best practices to streamline package
     development.">
+<meta property="og:image" content="https://jonthegeek.github.io/api2r/logo.svg">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -64,11 +71,77 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="api2r">api2r<a class="anchor" aria-label="anchor" href="#api2r"></a>
-</h1></div>
+<div class="page-header">
+<img src="logo.svg" class="logo" alt=""><h1 id="api2r-">api2r 
+<a class="anchor" aria-label="anchor" href="#api2r-"></a>
+</h1>
+</div>
 <!-- badges: start -->
 
-<p>Automatically generate R package skeletons from ‘application programming interfaces (APIs)’ that follow the ‘OpenAPI Specification (OAS)’. The skeletons implement best practices to streamline package development.</p>
+<p>This package will allow users to automatically generate R package skeletons from APIs that follow the <a href="https://spec.openapis.org/oas/v3.1.0" class="external-link">OpenAPI Specification (OAS)</a>. The skeletons will implement best practices to streamline package development.</p>
+<p>I submitted a proposal to the <a href="https://www.r-consortium.org/all-projects/call-for-proposals" class="external-link">R Consortium 2023 ISC Grant Program</a> to fund this development. I intend to work on the package regardless, but funding would allow me to dedicate more time, and thus finish more quickly.</p>
+<div class="section level2">
+<h2 id="the-plan">The Plan<a class="anchor" aria-label="anchor" href="#the-plan"></a>
+</h2>
+<p>This is a rough outline of the planned development of this package, working toward a stable version 1.0.0:</p>
+<ul>
+<li>0.1.0: Basic authentication and endpoint calls.
+<ul>
+<li>Export a function to generate <code>R/*.R</code> and <code>tests/testthat/*.R</code> files to authenticate the user and make a call to the API, given the URL of an OpenAPI spec in YAML format. The generated files will follow and encourage best practices, and will serve as the core around which the rest of a package would be built.</li>
+<li>Produce a vignette about configuring authentication.</li>
+<li>
+<strong>Potential challenges:</strong> Authentication is a complex and delicate subject. Some APIs require registration of special apps to “catch” authentication requests, while others simply provide an API key. I will need to carefully navigate these complexities in the vignette.</li>
+</ul>
+</li>
+<li>0.2.0: OAS definition discovery.
+<ul>
+<li>Add support for APIs using the OAS json format.</li>
+<li>Streamline discovery of API definitions (with associated error handling).</li>
+<li>
+<strong>Potential challenges:</strong> There does not appear to be a set standard of where API definitions are posted on a given site. It might be difficult to help users find the right place. Interestingly, <a href="https://APIs.guru" class="external-link uri">https://APIs.guru</a> itself has a (simple) API to aid in API discovery, which might provide an opportunity to use api2r to generate parts of itself.</li>
+</ul>
+</li>
+<li>0.3.0: Batching and rate limiting.
+<ul>
+<li>Add documentation for implementing batching and rate-limiting.</li>
+<li>If possible, export functionality to help implement these processes, but standards seem to vary widely.</li>
+<li>
+<strong>Potential challenges:</strong> This step will involve more reading and documenting than code, to gather examples of how different APIs implement limits and batching. It’s possible systems will be so different that it will be difficult to summarize them. For example, Slack has two separate batching systems in its API, with some functions moved to the newer system, and others not.</li>
+</ul>
+</li>
+<li>0.4.0: Endpoint function scaffolding.
+<ul>
+<li>Generate R/<em>.R and tests/testthat/</em>.R files for all endpoints (“paths”) described in the given API specification.</li>
+<li>The generated functions will work, but error checking, documentation, and tests will be minimal.</li>
+<li>
+<strong>Potential challenges:</strong> I’ll need to strike a balance here between getting a basic working system and producing something that can be easily expanded later.</li>
+</ul>
+</li>
+<li>0.5.0: More robust scaffolding.
+<ul>
+<li>Add parameter documentation.</li>
+<li>Also add parameter type checking.</li>
+<li>
+<strong>Potential challenges:</strong> By this point I’ll need an OAS definition document to use for testing that includes all of the possible parameter types. I’ll likely need to generate a fake API specification that goes beyond a typical individual example.</li>
+</ul>
+</li>
+<li>0.6.0: Expected results.
+<ul>
+<li>Add response (return value) documentation.</li>
+<li>Use expected responses to generate better test scaffolds.</li>
+<li>
+<strong>Potential challenges:</strong> Testing the generation of tests might present unique challenges. I’ll need to look into how testthat tests itself.</li>
+</ul>
+</li>
+<li>0.7.0: Error messaging.
+<ul>
+<li>Add more robust error messaging for non-standard responses.</li>
+<li>
+<strong>Potential challenges:</strong> Mocking cases where things fail can be tricky. Ideally this step will involve pushing the package to a stable 1.0.0, but that will require enough usage to feel confident that the core function definitions are stable.</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -80,7 +153,8 @@
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<p>Add usage information and examples here.</p>
+<p>This package does not yet work.</p>
+<p>See <a href="https://usethis.r-lib.org/reference/create_package.html" class="external-link">usethis::create_package()</a> and <a href="https://thinkr-open.github.io/golem/reference/create_golem.html" class="external-link">golem::create_golem()</a> for motivating examples.</p>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
