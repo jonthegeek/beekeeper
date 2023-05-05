@@ -1,4 +1,4 @@
-Package: api2r
+Package: beekeeper
 Title: Rapidly Scaffold API Client Packages
 Version: 0.0.0.9000
 Authors@R: 
@@ -9,9 +9,9 @@ Description: Automatically generate R package skeletons from 'application
     (OAS)'. The skeletons implement best practices to streamline package
     development.
 License: MIT + file LICENSE
-URL: https://github.com/jonthegeek/api2r,
-    https://jonthegeek.github.io/api2r/
-BugReports: https://github.com/jonthegeek/api2r/issues
+URL: https://github.com/jonthegeek/beekeeper,
+    https://jonthegeek.github.io/beekeeper/
+BugReports: https://github.com/jonthegeek/beekeeper/issues
 Suggests: 
     covr,
     testthat (>= 3.0.0)

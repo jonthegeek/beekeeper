@@ -1,17 +1,17 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# api2r <a href="https://jonthegeek.github.io/api2r/"><img src="man/figures/logo.svg" align="right" height="424" /></a>
+# beekeeper <a href="https://jonthegeek.github.io/beekeeper/"><img src="man/figures/logo.svg" align="right" height="424" /></a>
 
 <!-- badges: start -->
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/api2r)](https://CRAN.R-project.org/package=api2r)
+status](https://www.r-pkg.org/badges/version/beekeeper)](https://CRAN.R-project.org/package=beekeeper)
 [![Codecov test
-coverage](https://codecov.io/gh/jonthegeek/api2r/branch/main/graph/badge.svg)](https://app.codecov.io/gh/jonthegeek/api2r?branch=main)
-[![R-CMD-check](https://github.com/jonthegeek/api2r/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jonthegeek/api2r/actions/workflows/R-CMD-check.yaml)
+coverage](https://codecov.io/gh/jonthegeek/beekeeper/branch/main/graph/badge.svg)](https://app.codecov.io/gh/jonthegeek/beekeeper?branch=main)
+[![R-CMD-check](https://github.com/jonthegeek/beekeeper/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jonthegeek/beekeeper/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 This package will allow users to automatically generate R package
@@ -49,7 +49,7 @@ working toward a stable version 1.0.0:
     of where API definitions are posted on a given site. It might be
     difficult to help users find the right place. Interestingly,
     <https://APIs.guru> itself has a (simple) API to aid in API
-    discovery, which might provide an opportunity to use api2r to
+    discovery, which might provide an opportunity to use beekeeper to
     generate parts of itself.
 - 0.3.0: Batching and rate limiting.
   - Add documentation for implementing batching and rate-limiting.
@@ -91,12 +91,12 @@ working toward a stable version 1.0.0:
 
 ## Installation
 
-You can install the development version of api2r from
+You can install the development version of beekeeper from
 [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("jonthegeek/api2r")
+remotes::install_github("jonthegeek/beekeeper")
 ```
 
 ## Usage
@@ -111,6 +111,7 @@ for motivating examples.
 
 ## Code of Conduct
 
-Please note that the api2r project is released with a [Contributor Code
-of Conduct](https://jonthegeek.github.io/api2r/CODE_OF_CONDUCT.html). By
-contributing to this project, you agree to abide by its terms.
+Please note that the beekeeper project is released with a [Contributor
+Code of
+Conduct](https://jonthegeek.github.io/beekeeper/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.

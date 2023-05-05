@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright (c) 2023 api2r authors
+Copyright (c) 2023 beekeeper authors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
