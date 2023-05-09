@@ -22,15 +22,24 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/jonthegeek/beekeeper/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jonthegeek/beekeeper/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-This package will allow users to automatically generate R package skeletons from APIs that follow the [OpenAPI Specification (OAS)](https://spec.openapis.org/oas/v3.1.0). 
+This package will allow users to automatically generate R package skeletons from APIs that follow the [OpenAPI Specification (OAS)](https://spec.openapis.org/oas/v3.1.0) (and probably other specifications, such as swagger, the predecessor to OpenAPI). 
 The skeletons will implement best practices to streamline package development.
-
-I submitted a proposal to the [R Consortium 2023 ISC Grant Program](https://www.r-consortium.org/all-projects/call-for-proposals) to fund this development.
-I intend to work on the package regardless, but funding would allow me to dedicate more time, and thus finish more quickly.
 
 ## The Plan
 
-This is a rough outline of the planned development of this package, working toward a stable version 1.0.0:
+This project has been accepted by the [R Consortium 2023 ISC Grant Program](https://www.r-consortium.org/all-projects/call-for-proposals)!
+
+In general, this is how I anticipate things working:
+
+-   Create a class, `tbl_swarm`, which is a list of tbls with an opinionated relationship. The exact opinion associated with a given `tbl_swarm` leads to subclasses, such as.
+-   Create a `tbl_swarm` subclass, `api_tbl_swarm`. Such objects will contain the result of parsing an API spec into a format that can be ~easily built into a package.
+-   Create a function that takes an `api_tbl_swarm` and creates a package. Build backward from here; determine which parts of the spec are useful, and how they need to be parsed to be easy to work with.
+
+That general framework will make it cleaner to add different types of spec or different implementations of the OpenAPI spec (not all specs are perfect).
+That way the process is divided more cleanly into "use the spec to generate the expected `api_tbl_swarm`" and then "use the `api_tbl_swarm` to generate a package."
+That also means I can guide users through steps to manually make changes to their not-quite-perfect `tbl_swarm` (`imperfect_tbl_swarm`? `pending_api_tbl_swarm`?) in order to generate a valid `api_tbl_swarm`.
+
+This is a rough outline of the planned development milestones of this package, working toward a stable version 1.0.0:
 
 -   0.1.0: Basic authentication and endpoint calls.
     -   Export a function to generate `R/*.R` and `tests/testthat/*.R` files to authenticate the user and make a call to the API, given the URL of an OpenAPI spec in YAML format. The generated files will follow and encourage best practices, and will serve as the core around which the rest of a package would be built.
