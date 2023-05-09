@@ -78,12 +78,19 @@
 </div>
 <!-- badges: start -->
 
-<p>This package will allow users to automatically generate R package skeletons from APIs that follow the <a href="https://spec.openapis.org/oas/v3.1.0" class="external-link">OpenAPI Specification (OAS)</a>. The skeletons will implement best practices to streamline package development.</p>
-<p>I submitted a proposal to the <a href="https://www.r-consortium.org/all-projects/call-for-proposals" class="external-link">R Consortium 2023 ISC Grant Program</a> to fund this development. I intend to work on the package regardless, but funding would allow me to dedicate more time, and thus finish more quickly.</p>
+<p>This package will allow users to automatically generate R package skeletons from APIs that follow the <a href="https://spec.openapis.org/oas/v3.1.0" class="external-link">OpenAPI Specification (OAS)</a> (and probably other specifications, such as swagger, the predecessor to OpenAPI). The skeletons will implement best practices to streamline package development.</p>
 <div class="section level2">
 <h2 id="the-plan">The Plan<a class="anchor" aria-label="anchor" href="#the-plan"></a>
 </h2>
-<p>This is a rough outline of the planned development of this package, working toward a stable version 1.0.0:</p>
+<p>This project has been accepted by the <a href="https://www.r-consortium.org/all-projects/call-for-proposals" class="external-link">R Consortium 2023 ISC Grant Program</a>!</p>
+<p>In general, this is how I anticipate things working:</p>
+<ul>
+<li>Create a class, <code>tbl_swarm</code>, which is a list of tbls with an opinionated relationship. The exact opinion associated with a given <code>tbl_swarm</code> leads to subclasses, such as.</li>
+<li>Create a <code>tbl_swarm</code> subclass, <code>api_tbl_swarm</code>. Such objects will contain the result of parsing an API spec into a format that can be ~easily built into a package.</li>
+<li>Create a function that takes an <code>api_tbl_swarm</code> and creates a package. Build backward from here; determine which parts of the spec are useful, and how they need to be parsed to be easy to work with.</li>
+</ul>
+<p>That general framework will make it cleaner to add different types of spec or different implementations of the OpenAPI spec (not all specs are perfect). That way the process is divided more cleanly into “use the spec to generate the expected <code>api_tbl_swarm</code>” and then “use the <code>api_tbl_swarm</code> to generate a package.” That also means I can guide users through steps to manually make changes to their not-quite-perfect <code>tbl_swarm</code> (<code>imperfect_tbl_swarm</code>? <code>pending_api_tbl_swarm</code>?) in order to generate a valid <code>api_tbl_swarm</code>.</p>
+<p>This is a rough outline of the planned development milestones of this package, working toward a stable version 1.0.0:</p>
 <ul>
 <li>0.1.0: Basic authentication and endpoint calls.
 <ul>
@@ -197,7 +204,8 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Jon Harmon <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-4781-4346" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Jon Harmon <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0003-4781-4346" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>R Consortium <br><small class="roles"> Funder </small>  </li>
 </ul>
 </div>
 
@@ -217,7 +225,7 @@
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Jon Harmon.</p>
+<p>Developed by Jon Harmon, R Consortium.</p>
 </div>
 
 <div class="pkgdown-footer-right">
