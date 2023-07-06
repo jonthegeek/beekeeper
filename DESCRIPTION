@@ -14,6 +14,8 @@ License: MIT + file LICENSE
 URL: https://github.com/jonthegeek/beekeeper,
     https://jonthegeek.github.io/beekeeper/
 BugReports: https://github.com/jonthegeek/beekeeper/issues
+Imports: 
+    rlang (>= 1.1.0)
 Suggests: 
     covr,
     testthat (>= 3.0.0)
