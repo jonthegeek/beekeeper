@@ -16,9 +16,10 @@ URL: https://github.com/jonthegeek/beekeeper,
 BugReports: https://github.com/jonthegeek/beekeeper/issues
 Imports: 
     cli,
-    fastmatch,
     glue,
+    lubridate,
     rlang (>= 1.1.0),
+    usethis,
     vctrs,
     yaml
 Suggests: 

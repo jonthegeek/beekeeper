@@ -4,13 +4,15 @@
 \alias{oas_config}
 \title{Configure a Package via an OpenAPI Spec}
 \usage{
-oas_config(oas, api_abbr)
+oas_config(oas, api_abbr, config_file = "_beekeeper.yml")
 }
 \arguments{
 \item{oas}{An openAPI spec, or the URL of such a spec.}
 
 \item{api_abbr}{A short (2-5 letter) abbreviation for the API, for use in
 function names and environment variables.}
+
+\item{config_file}{The path to the configuration file.}
 }
 \value{
 The OAS spec, invisibly.
