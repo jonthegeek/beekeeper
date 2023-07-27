@@ -4,3 +4,7 @@
 .httr-oauth
 .DS_Store
 docs
+inst/doc
+_beekeeper.yml
+exploration
+_beekeeper_rapid.rds

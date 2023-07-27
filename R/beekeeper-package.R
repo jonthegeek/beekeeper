@@ -3,5 +3,8 @@
 
 ## usethis namespace: start
 #' @importFrom glue glue
+#' @importFrom nectar call_api
+#' @importFrom rapid as_rapid
+#' @importFrom usethis use_package
 ## usethis namespace: end
 NULL

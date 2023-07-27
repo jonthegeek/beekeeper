@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# beekeeper <a href="https://jonthegeek.github.io/beekeeper/"><img src="man/figures/logo.svg" align="right" height="424" /></a>
+# beekeeper <a href="https://jonthegeek.github.io/beekeeper/"><img src="man/figures/logo.svg" align="right" height="120" /></a>
 
 <!-- badges: start -->
 
@@ -14,9 +14,9 @@ coverage](https://codecov.io/gh/jonthegeek/beekeeper/branch/main/graph/badge.svg
 [![R-CMD-check](https://github.com/jonthegeek/beekeeper/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jonthegeek/beekeeper/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-Use beekeeper to aid in the creation and maintenance of R packages that
-wrap APIs, using the information contained in the API documentation as
-instructions for the package.
+Use beekeeper to create and maintain R packages that wrap APIs. The
+generated packages follow best practices, including documentation and
+testing.
 
 This package forcuses on APIs that follow the [OpenAPI Specification
 (OAS)](https://spec.openapis.org/oas/v3.1.0). The package skeletons
@@ -126,23 +126,37 @@ generate a valid `api_spec`.
 
 ## Installation
 
-You can install the development version of beekeeper from
-[GitHub](https://github.com/) with:
+<div class=".pkgdown-release">
+
+Install the released version of beekeeper from
+[CRAN](https://cran.r-project.org/):
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("jonthegeek/beekeeper")
+# (not yet, so instead install the dev version)
+# install.packages("pak")
+pak::pak("jonthegeek/beekeeper")
 ```
+
+</div>
+
+<div class=".pkgdown-devel">
+
+Install the development version of beekeeper from
+[GitHub](https://github.com/):
+
+``` r
+# install.packages("pak")
+pak::pak("jonthegeek/beekeeper")
+```
+
+</div>
 
 ## Usage
 
-This package does not yet work.
+Use `use_beekeeper()` to generate a `_beekeeper.yml` file, and then
+`generate_pkg()` to generate code based on that configuration.
 
-See
-[usethis::create_package()](https://usethis.r-lib.org/reference/create_package.html)
-and
-[golem::create_golem()](https://thinkr-open.github.io/golem/reference/create_golem.html)
-for motivating examples.
+Read `vignette("beekeeper")` for more details.
 
 ## Code of Conduct
 
