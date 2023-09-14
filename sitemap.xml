@@ -19,6 +19,12 @@
     <loc>https://jonthegeek.github.io/beekeeper/SUPPORT.html</loc>
   </url>
   <url>
+    <loc>https://jonthegeek.github.io/beekeeper/articles/beekeeper.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/beekeeper/articles/index.html</loc>
+  </url>
+  <url>
     <loc>https://jonthegeek.github.io/beekeeper/authors.html</loc>
   </url>
   <url>
@@ -28,6 +34,24 @@
     <loc>https://jonthegeek.github.io/beekeeper/reference/beekeeper-package.html</loc>
   </url>
   <url>
+    <loc>https://jonthegeek.github.io/beekeeper/reference/dot-assert_is_pkg.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/beekeeper/reference/dot-bk_use_template.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/beekeeper/reference/dot-is_pkg.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/beekeeper/reference/generate_pkg.html</loc>
+  </url>
+  <url>
     <loc>https://jonthegeek.github.io/beekeeper/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/beekeeper/reference/pkg_agent.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/beekeeper/reference/use_beekeeper.html</loc>
   </url>
 </urlset>
