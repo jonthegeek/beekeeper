@@ -22,9 +22,13 @@ test_that("config writes a yml", {
   expect_identical(test_result, config_path)
   reread_rapid <- readRDS(rapid_write_path)
   expect_identical(guru_rapid, reread_rapid)
-  test_result_file <- readLines(config_path)
-  expect_snapshot(
+  test_result_file <- scrub_config(readLines(config_path))
+  expected_result_file <- scrub_config(
+    readLines(test_path("_fixtures", "guru_beekeeper.yml"))
+  )
+  expected_result_file[[4]] <- "rapid_file: RAPID_FILE_PATH\""
+  expect_identical(
     test_result_file,
-    transform = scrub_config
+    expected_result_file
   )
 })
