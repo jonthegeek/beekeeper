@@ -1,0 +1,70 @@
+---
+title: "Building an API Package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Building an API Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  eval = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(beekeeper)
+```
+
+The goal of beekeeper is to streamline and standardize the creation of high-quality API-wrapper packages.
+
+The process works best for APIs that follow the [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.0) (the "OAS").
+Some APIs that follow the OAS can be found on [APIs.guru](https://apis.guru/).
+We will use the [APIs.guru API](https://api.apis.guru/v2/openapi.yaml) (no authentication) and the [Asana API](https://raw.githubusercontent.com/Asana/developer-docs/master/defs/asana_oas.yaml) (authentication using a token *or* using OAuth2) as examples.
+
+## Step 0: Create your package
+
+To start, first create a package.
+We recommend that you start with `usethis::create_package()`
+
+You can get basic API calls working in that package through a two-step process.
+
+## Step 1: Configure your package
+
+If your target API follows the OAS, you can use your API's OpenAPI Document to configure your package.
+
+```{r config}
+# Note: Running these commands will create or overwrite "_beekeeper.yml" in your
+# working directory.
+use_beekeeper(
+  url("https://api.apis.guru/v2/openapi.yaml"),
+  api_abbr = "guru"
+)
+
+use_beekeeper(
+  url("https://raw.githubusercontent.com/Asana/developer-docs/master/defs/asana_oas.yaml"),
+  api_abbr = "asn"
+)
+
+use_beekeeper(
+  url("https://i.1password.com/media/1password-events-reporting/1password-events-api.yaml"),
+  api_abbr = "pss"
+)
+```
+
+You can use the generated `_beekeeper.yml` files above as a template to generate your own `_beekeeper.yml` file if you would like to continue to step 2 for an API that does not follow the OAS.
+
+## Step 2: Generate your package skeleton
+
+With a valid `_beekeeper.yml` file, you can generate the rest of the package.
+Right now the package will only export a function to call the API, but eventually this process will also generate functions for the endpoints specified in the API's OpenAPI document.
+
+```{r generate}
+# Note: Running this command will create or overwrite files in your R directory.
+generate_pkg()
+```
+
+<!-- Up next (before the first release of this package): Authentication! -->
