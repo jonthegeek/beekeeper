@@ -18,10 +18,3 @@ test_that("Applying a 1-server config generates the expected R files.", {
     "nectar"
   )
 })
-
-test_that("pkg_agent() generates package agents", {
-  expect_identical(
-    pkg_agent(test_path("_fixtures", "DESCRIPTION")),
-    "beekeeper (https://jonthegeek.github.io/beekeeper/)"
-  )
-})

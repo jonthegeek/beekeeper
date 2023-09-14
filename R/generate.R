@@ -11,7 +11,7 @@
 #' @return `TRUE` invisibly.
 #' @export
 generate_pkg <- function(config_file = "_beekeeper.yml",
-                         pkg_agent = pkg_agent(fs::path_dir(config_file))) {
+                         pkg_agent = generate_pkg_agent(config_file)) {
   .assert_is_pkg()
   config <- .read_config(config_file)
   api_definition <- readRDS(
@@ -106,28 +106,4 @@ generate_pkg <- function(config_file = "_beekeeper.yml",
   })
 
   return(invisible(target))
-}
-
-#' Create a user agent for the active package
-#'
-#' @param path The path to the DESCRIPTION file, or to a directory within a
-#'   package.
-#'
-#' @return A string with the name of the package and (if available) the first
-#'   URL associated with the package.
-#'
-#' @export
-pkg_agent <- function(path = ".") {
-  pkg_desc <- desc::desc(file = path)
-  pkg_name <- pkg_desc$get_field("Package")
-  pkg_url_glue <- ""
-  pkg_url <- pkg_desc$get_urls()
-  if (length(pkg_url)) {
-    pkg_url_glue <- glue::glue(
-      " ({pkg_url[[1]]})"
-    )
-  }
-  return(
-    glue::glue("{pkg_name}{pkg_url_glue}")
-  )
 }
