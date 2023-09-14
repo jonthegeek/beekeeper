@@ -3,6 +3,7 @@
 export(generate_pkg)
 export(pkg_agent)
 export(use_beekeeper)
+if (getRversion() < "4.3.0") importFrom("S7", "@")
 importFrom(glue,glue)
 importFrom(nectar,call_api)
 importFrom(rapid,as_rapid)
