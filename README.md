@@ -142,6 +142,16 @@ Use `use_beekeeper()` to generate a `_beekeeper.yml` file, and then
 
 Read `vignette("beekeeper")` for more details.
 
+## Why “beekeeper”?
+
+A beekeeper is someone who tends to bees, and {beekeeper} is a package
+that helps you tend to APIs. “Apis” is Latin for “bee”, and is the
+[genus name for honey bees](https://en.wikipedia.org/wiki/Honey_bee).
+
+In addition to the pun, I hope to eventually include a “hive” of hex
+logos on this site, with each hex representing an API package that has
+been “tended” by {beekeeper}.
+
 ## Code of Conduct
 
 Please note that the beekeeper project is released with a [Contributor
