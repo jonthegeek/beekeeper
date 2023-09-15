@@ -6,7 +6,7 @@
 \usage{
 generate_pkg(
   config_file = "_beekeeper.yml",
-  pkg_agent = pkg_agent(fs::path_dir(config_file))
+  pkg_agent = generate_pkg_agent(config_file)
 )
 }
 \arguments{
