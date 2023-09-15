@@ -29,3 +29,16 @@
     x = "{.path {base_path}} is not inside a package."
   ))
 }
+
+.stabilize_chr_scalar_nonempty <- function(x,
+                                           x_arg = rlang::caller_arg(x),
+                                           call = rlang::caller_env()) {
+  stbl::stabilize_chr_scalar(
+    x,
+    allow_null = FALSE,
+    allow_zero_length = FALSE,
+    allow_na = FALSE,
+    x_arg = x_arg,
+    call = call
+  )
+}

@@ -16,7 +16,8 @@ generate_pkg(
 \code{user_agent} argument of \code{\link[nectar:call_api]{nectar::call_api()}}.}
 }
 \value{
-\code{TRUE} invisibly.
+A character vector of paths to files that were added or updated,
+invisibly.
 }
 \description{
 Creates or updates package files based on the information in a beekeeper

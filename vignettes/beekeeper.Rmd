@@ -63,7 +63,8 @@ With a valid `_beekeeper.yml` file, you can generate the rest of the package.
 Right now the package will only export a function to call the API, but eventually this process will also generate functions for the endpoints specified in the API's OpenAPI document.
 
 ```{r generate}
-# Note: Running this command will create or overwrite files in your R directory.
+# Note: Running this command will create or overwrite files in your R and
+# tests/testthat directories.
 generate_pkg()
 ```
 
