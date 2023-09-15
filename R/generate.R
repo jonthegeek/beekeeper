@@ -8,77 +8,65 @@
 #' @param pkg_agent A string to identify this package, for use in the
 #'   `user_agent` argument of [nectar::call_api()].
 #'
-#' @return `TRUE` invisibly.
+#' @return A character vector of paths to files that were added or updated,
+#'   invisibly.
 #' @export
 generate_pkg <- function(config_file = "_beekeeper.yml",
                          pkg_agent = generate_pkg_agent(config_file)) {
   .assert_is_pkg()
   config <- .read_config(config_file)
-  api_definition <- readRDS(
-    fs::path(fs::path_dir(config_file), config$rapid_file)
-  )
+  api_definition <- .read_api_definition(config_file, config$rapid_file)
+  .prepare_r()
 
-  # This will be a series of functions, each of which generates one or more
-  # files.
-  .generate_call(
+  touched_files <- .generate_call(
     api_title = config$api_title,
     api_abbr = config$api_abbr,
     base_url = api_definition@servers@url,
     pkg_agent = pkg_agent
   )
 
-  return(invisible(TRUE))
+  return(invisible(touched_files))
+}
+
+.read_api_definition <- function(config_file, rapid_file) {
+  readRDS(
+    fs::path(fs::path_dir(config_file), rapid_file)
+  )
 }
 
 .generate_call <- function(api_title,
                            api_abbr,
                            base_url,
                            pkg_agent) {
-  api_title <- stbl::stabilize_chr_scalar(
-    api_title,
-    allow_null = FALSE,
-    allow_zero_length = FALSE,
-    allow_na = FALSE
-  )
-  api_abbr <- stbl::stabilize_chr_scalar(
-    api_abbr,
-    allow_null = FALSE,
-    allow_zero_length = FALSE,
-    allow_na = FALSE
-  )
-  base_url <- stbl::stabilize_chr_scalar(
-    base_url,
-    allow_null = FALSE,
-    allow_zero_length = FALSE,
-    allow_na = FALSE
-  )
-  pkg_agent <- stbl::stabilize_chr_scalar(
-    pkg_agent,
-    allow_null = FALSE,
-    allow_zero_length = FALSE,
-    allow_na = FALSE
-  )
+  api_title <- .stabilize_chr_scalar_nonempty(api_title)
+  api_abbr <- .stabilize_chr_scalar_nonempty(api_abbr)
+  base_url <- .stabilize_chr_scalar_nonempty(base_url)
+  pkg_agent <- .stabilize_chr_scalar_nonempty(pkg_agent)
 
-  usethis::use_directory("R")
-  usethis::use_package("nectar")
-
-  data_for_call <- list(
-    api_title = api_title,
-    api_abbr = api_abbr,
-    base_url = base_url,
-    pkg_agent = pkg_agent
+  touched_files <- c(
+    .bk_use_template(
+      template = "010-call.R",
+      data = list(
+        api_title = api_title,
+        api_abbr = api_abbr,
+        base_url = base_url,
+        pkg_agent = pkg_agent
+      )
+    ),
+    .bk_use_template(
+      template = "test-010-call.R",
+      dir = "tests/testthat",
+      data = list(api_abbr = api_abbr)
+    )
   )
-
-  template <- "010-call.R"
-
-  # Eventually this will also include a test-generator.
-  .bk_use_template(
-    template = template,
-    data = data_for_call
-  )
-  return(invisible(TRUE))
+  return(invisible(touched_files))
 }
 
+.prepare_r <- function() {
+  usethis::use_directory("R")
+  usethis::use_testthat()
+  usethis::use_package("nectar")
+}
 
 #' Use a template in this package
 #'

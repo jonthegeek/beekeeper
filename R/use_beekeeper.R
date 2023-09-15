@@ -36,24 +36,9 @@ S7::method(use_beekeeper, rapid::rapid) <-
            ...,
            config_file = "_beekeeper.yml",
            rapid_file = "_beekeeper_rapid.rds") {
-    api_abbr <- stbl::stabilize_chr_scalar(
-      api_abbr,
-      allow_null = FALSE,
-      allow_zero_length = FALSE,
-      allow_na = FALSE
-    )
-    config_file <- stbl::stabilize_chr_scalar(
-      config_file,
-      allow_null = FALSE,
-      allow_zero_length = FALSE,
-      allow_na = FALSE
-    )
-    rapid_file <- stbl::stabilize_chr_scalar(
-      rapid_file,
-      allow_null = FALSE,
-      allow_zero_length = FALSE,
-      allow_na = FALSE
-    )
+    api_abbr <- .stabilize_chr_scalar_nonempty(api_abbr)
+    config_file <- .stabilize_chr_scalar_nonempty(config_file)
+    rapid_file <- .stabilize_chr_scalar_nonempty(rapid_file)
     saveRDS(x, rapid_file)
 
     use_build_ignore(c(config_file, rapid_file))

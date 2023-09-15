@@ -27,6 +27,7 @@ Imports:
     S7,
     stbl,
     styler,
+    testthat,
     usethis,
     utils,
     yaml
@@ -35,7 +36,6 @@ Suggests:
     knitr,
     rmarkdown,
     stringr,
-    testthat,
     withr
 VignetteBuilder: 
     knitr
