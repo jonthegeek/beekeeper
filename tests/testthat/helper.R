@@ -30,15 +30,15 @@ scrub_testpkg <- function(text) {
 scrub_updated <- function(input) {
   sub(
     "updated_on:.*$",
-    "updated_on: DATETIME\"",
+    "updated_on: DATETIME",
     input
   )
 }
 
 scrub_rapid_file_location <- function(input) {
   sub(
-    "rapid_file: file.*$",
-    "rapid_file: RAPID_FILE_PATH\"",
+    "rapid_file: .*$",
+    "rapid_file: RAPID_FILE_PATH",
     input
   )
 }
