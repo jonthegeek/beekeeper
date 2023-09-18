@@ -1,5 +1,3 @@
-withr::local_options(usethis.quiet = TRUE)
-
 test_that("generate_pkg() adds beekeeper to suggests.", {
   skip_on_cran()
   config <- readLines(test_path("_fixtures", "guru_beekeeper.yml"))
