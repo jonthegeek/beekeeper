@@ -2,24 +2,13 @@
 
 create_local_package <- function(pkgname = "testpkg",
                                  env = parent.frame()) {
-  dir <- fs::file_temp(pattern = pkgname)
+  withr::local_options(usethis.quiet = TRUE, .local_envir = env)
 
-  old_wd <- getwd()
+  dir <- withr::local_tempdir(pattern = pkgname, .local_envir = env)
 
-  withr::defer(
-    {
-      fs::dir_delete(dir)
-    },
-    envir = env
-  )
   usethis::create_package(
     dir,
-    # This is for the sake of interactive development of snapshot tests.
-    # When the active usethis project is a package created with this
-    # function, testthat learns its edition from *that* package, not from
-    # usethis. So, by default, opt in to testthat 3e in these ephemeral test
-    # packages.
-    # I also need a url to check for it in user agent.
+    # I need a url to check for it in user agent.
     fields = list(
       "URL" = "https://example.com",
       "Config/testthat/edition" = "3"
@@ -29,23 +18,9 @@ create_local_package <- function(pkgname = "testpkg",
     check_name = FALSE
   )
 
-  old_project <- usethis::proj_set(dir)
-  withr::defer(
-    {
-      usethis::proj_set(old_project, force = TRUE)
-    },
-    envir = env
-  )
+  usethis::local_project(dir, quiet = TRUE, .local_envir = env)
 
-  withr::defer(
-    {
-      setwd(old_wd)
-    },
-    envir = env
-  )
-  setwd(usethis::proj_get())
-
-  invisible(usethis::proj_get())
+  invisible(dir)
 }
 
 scrub_testpkg <- function(text) {
@@ -55,15 +30,15 @@ scrub_testpkg <- function(text) {
 scrub_updated <- function(input) {
   sub(
     "updated_on:.*$",
-    "updated_on: DATETIME\"",
+    "updated_on: DATETIME",
     input
   )
 }
 
 scrub_rapid_file_location <- function(input) {
   sub(
-    "rapid_file: file.*$",
-    "rapid_file: RAPID_FILE_PATH\"",
+    "rapid_file: .*$",
+    "rapid_file: RAPID_FILE_PATH",
     input
   )
 }
