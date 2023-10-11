@@ -39,7 +39,7 @@
     
     <a class="navbar-brand me-2" href="index.html">beekeeper</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,17 +98,15 @@
 </ul>
 </li>
 <li>
-<input type="checkbox" disabled><strong>0.1.0: Basic authentication and endpoint calls.</strong><ul>
+<input type="checkbox" disabled checked><strong>0.1.0: Basic authentication and endpoint calls.</strong><ul class="task-list">
 <li>
 <input type="checkbox" disabled checked>Export a function or functions to generate <code>R/*.R</code> files to call an API, given the URL of an OpenAPI spec in YAML format (or a <code><a href="https://jonthegeek.github.io/rapid/reference/rapid.html" class="external-link">rapid::rapid()</a></code> object). The generated files will follow and encourage best practices, and will serve as the core around which the rest of a package would be built.</li>
 <li>
 <input type="checkbox" disabled checked>Also generate a <code>tests/testthat/*.R</code> file for that generated function.</li>
 <li>
-<input type="checkbox" disabled>Generate <code>R/*.R</code> and <code>tests/testthat/*.R</code> files to authenticate the user.</li>
+<input type="checkbox" disabled checked>Generate <code>R/*.R</code> and <code>tests/testthat/*.R</code> files to authenticate the user (using API keys).</li>
 <li>
-<input type="checkbox" disabled>Produce a vignette about configuring authentication.</li>
-<li>
-<strong>Potential challenges:</strong> Authentication is a complex and delicate subject. Some APIs require registration of special apps to “catch” authentication requests, while others simply provide an API key. I will need to carefully navigate these complexities in the vignette.</li>
+<input type="checkbox" disabled checked>Produce a vignette about configuring authentication. Folded into the main vignette since it’s suprisingly straightforward.</li>
 </ul>
 </li>
 <li>
