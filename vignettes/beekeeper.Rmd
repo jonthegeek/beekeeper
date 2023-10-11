@@ -186,7 +186,7 @@ httptest2::with_mock_dir("api/01-call/valid", {
 
 Manually edited to:
 
-```{r test-010-call}
+```{r test-010-call-fixed}
 httptest2::with_mock_dir("api/01-call/valid", {
   test_that("Can call an endpoint without errors", {
     PROVIDED_PATH <- "candidates"
