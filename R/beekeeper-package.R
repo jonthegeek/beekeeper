@@ -3,6 +3,7 @@
 
 ## usethis namespace: start
 #' @importFrom glue glue
+#' @importFrom httptest2 use_httptest2
 #' @importFrom nectar call_api
 #' @importFrom rapid as_rapid
 #' @importFrom rlang .data
