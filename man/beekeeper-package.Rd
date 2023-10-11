@@ -11,7 +11,7 @@ Automatically generate R package skeletons from 'application programming interfa
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://jonthegeek.github.io/beekeeper/}
+  \item \url{https://beekeeper.api2r.org}
   \item \url{https://github.com/jonthegeek/beekeeper}
   \item Report bugs at \url{https://github.com/jonthegeek/beekeeper/issues}
 }

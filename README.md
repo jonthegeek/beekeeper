@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# beekeeper <a href="https://jonthegeek.github.io/beekeeper/"><img src="man/figures/logo.svg" align="right" height="120" /></a>
+# beekeeper <a href="https://beekeeper.api2r.org"><img src="man/figures/logo.svg" align="right" height="120" /></a>
 
 <!-- badges: start -->
 
@@ -155,6 +155,5 @@ been “tended” by {beekeeper}.
 ## Code of Conduct
 
 Please note that the beekeeper project is released with a [Contributor
-Code of
-Conduct](https://jonthegeek.github.io/beekeeper/CODE_OF_CONDUCT.html).
-By contributing to this project, you agree to abide by its terms.
+Code of Conduct](https://beekeeper.api2r.org/CODE_OF_CONDUCT.html). By
+contributing to this project, you agree to abide by its terms.

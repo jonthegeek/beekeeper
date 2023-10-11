@@ -5,7 +5,7 @@ test_that("generate_pkg() adds beekeeper to suggests.", {
 
   create_local_package()
   writeLines(config, "_beekeeper.yml")
-  saveRDS(guru_rapid, "_beekeeper_rapid.rds")
+  saveRDS(guru_rapid, "guru_rapid.rds")
 
   generate_pkg(pkg_agent = "TESTPKG (https://example.com)")
 
@@ -24,7 +24,7 @@ test_that("generate_pkg() generates call function.", {
 
   create_local_package()
   writeLines(config, "_beekeeper.yml")
-  saveRDS(guru_rapid, "_beekeeper_rapid.rds")
+  saveRDS(guru_rapid, "guru_rapid.rds")
 
   generate_pkg(pkg_agent = "TESTPKG (https://example.com)")
 
@@ -39,7 +39,7 @@ test_that("generate_pkg() adds nectar import.", {
 
   create_local_package()
   writeLines(config, "_beekeeper.yml")
-  saveRDS(guru_rapid, "_beekeeper_rapid.rds")
+  saveRDS(guru_rapid, "guru_rapid.rds")
 
   generate_pkg(pkg_agent = "TESTPKG (https://example.com)")
 
@@ -58,7 +58,7 @@ test_that("generate_pkg() generates call function test.", {
 
   create_local_package()
   writeLines(config, "_beekeeper.yml")
-  saveRDS(guru_rapid, "_beekeeper_rapid.rds")
+  saveRDS(guru_rapid, "guru_rapid.rds")
 
   generate_pkg(pkg_agent = "TESTPKG (https://example.com)")
 
@@ -73,7 +73,7 @@ test_that("generate_pkg() adds testthat to suggests.", {
 
   create_local_package()
   writeLines(config, "_beekeeper.yml")
-  saveRDS(guru_rapid, "_beekeeper_rapid.rds")
+  saveRDS(guru_rapid, "guru_rapid.rds")
 
   generate_pkg(pkg_agent = "TESTPKG (https://example.com)")
 

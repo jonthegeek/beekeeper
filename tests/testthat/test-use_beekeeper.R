@@ -5,11 +5,6 @@ test_that("config writes a yml", {
     }
   )
   rapid_path <- test_path("_fixtures/guru_rapid.rds")
-  # apid_url <- "https://api.apis.guru/v2/specs/apis.guru/2.2.0/openapi.yaml"
-  # apid_url |>
-  #   url() |>
-  #   rapid::as_rapid() |>
-  #   saveRDS(rapid_path)
   guru_rapid <- readRDS(rapid_path)
   config_path <- withr::local_tempfile(fileext = ".yml")
   rapid_write_path <- withr::local_tempfile(fileext = ".rds")

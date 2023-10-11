@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# beekeeper <a href="https://jonthegeek.github.io/beekeeper/"><img src="man/figures/logo.svg" align="right" height="120" /></a>
+# beekeeper <a href="https://beekeeper.api2r.org"><img src="man/figures/logo.svg" align="right" height="120" /></a>
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
@@ -105,4 +105,4 @@ In addition to the pun, I hope to eventually include a "hive" of hex logos on th
 
 ## Code of Conduct
 
-Please note that the beekeeper project is released with a [Contributor Code of Conduct](https://jonthegeek.github.io/beekeeper/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+Please note that the beekeeper project is released with a [Contributor Code of Conduct](https://beekeeper.api2r.org/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
