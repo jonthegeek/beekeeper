@@ -18,6 +18,7 @@ Imports:
     desc,
     fs,
     glue,
+    httptest2,
     lubridate,
     nectar,
     purrr,
