@@ -41,7 +41,7 @@ included in the grant proposal.
   - [x] I also realized I need a package for wrapping {httr2} calls.
     That package is called [{nectar}](https://nectar.api2r.org), and is
     also being developed parallel to this one.
-- [ ] **0.1.0: Basic authentication and endpoint calls.**
+- [x] **0.1.0: Basic authentication and endpoint calls.**
   - [x] Export a function or functions to generate `R/*.R` files to call
     an API, given the URL of an OpenAPI spec in YAML format (or a
     `rapid::rapid()` object). The generated files will follow and
@@ -49,13 +49,10 @@ included in the grant proposal.
     the rest of a package would be built.
   - [x] Also generate a `tests/testthat/*.R` file for that generated
     function.
-  - [ ] Generate `R/*.R` and `tests/testthat/*.R` files to authenticate
-    the user.
-  - [ ] Produce a vignette about configuring authentication.
-  - **Potential challenges:** Authentication is a complex and delicate
-    subject. Some APIs require registration of special apps to “catch”
-    authentication requests, while others simply provide an API key. I
-    will need to carefully navigate these complexities in the vignette.
+  - [x] Generate `R/*.R` and `tests/testthat/*.R` files to authenticate
+    the user (using API keys).
+  - [x] Produce a vignette about configuring authentication. Folded into
+    the main vignette since it’s suprisingly straightforward.
 - **0.2.0: OAS definition discovery.**
   - Add support for APIs using the OAS json format.
   - Streamline discovery of API definitions (with associated error

@@ -69,6 +69,7 @@ generate_pkg <- function(config_file = "_beekeeper.yml",
   usethis::use_testthat()
   usethis::use_package("nectar")
   usethis::use_package("beekeeper", type = "Suggests")
+  usethis::use_package("httptest2", type = "Suggests")
 }
 
 #' Use a template in this package
