@@ -11,8 +11,7 @@ Description: Automatically generate R package skeletons from 'application
     (OAS)'. The skeletons implement best practices to streamline package
     development.
 License: MIT + file LICENSE
-URL: https://jonthegeek.github.io/beekeeper/,
-    https://github.com/jonthegeek/beekeeper
+URL: https://beekeeper.api2r.org, https://github.com/jonthegeek/beekeeper
 BugReports: https://github.com/jonthegeek/beekeeper/issues
 Imports: 
     cli,
@@ -21,10 +20,12 @@ Imports:
     glue,
     lubridate,
     nectar,
+    purrr,
     rapid,
     rlang (>= 1.1.0),
     rprojroot,
     S7,
+    snakecase,
     stbl,
     styler,
     testthat,
