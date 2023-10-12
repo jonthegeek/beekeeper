@@ -40,14 +40,12 @@ If your target API follows the OAS, you can use your API's OpenAPI Document to c
 # Note: Running these commands will create or overwrite "_beekeeper.yml" in your
 # working directory.
 url("https://api.apis.guru/v2/openapi.yaml") |> 
-  rapid::as_rapid() |>
   use_beekeeper(
     api_abbr = "guru"
   )
 
 # Or for the FEC
 url("https://api.apis.guru/v2/specs/fec.gov/1.0/openapi.yaml") |> 
-  rapid::as_rapid() |>
   use_beekeeper(
     api_abbr = "fec"
   )
