@@ -3,10 +3,7 @@
   if (length(security_data)) {
     .bk_use_template(
       template = "020-security.R",
-      data = c(
-        security_data,
-        api_abbr = api_abbr
-      )
+      data = c(security_data, api_abbr = api_abbr)
     )
     security_data$security_signature <- .security_signature_generate(
       security_data$security_arg_names, api_abbr
@@ -16,17 +13,10 @@
 }
 
 .security_signature_generate <- function(security_arg_names, api_abbr) {
-  env_vars <- toupper(glue::glue(
-    "{api_abbr}_{security_arg_names}"
-  ))
+  env_vars <- toupper(glue::glue("{api_abbr}_{security_arg_names}"))
   return(
-    .collapse_comma_newline(
-      c(
-        "",
-        glue::glue(
-          "{security_arg_names} = Sys.getenv(\"{env_vars}\")"
-        )
-      )
-    )
+    .collapse_comma_newline(c("", glue::glue(
+      "{security_arg_names} = Sys.getenv(\"{env_vars}\")"
+    )))
   )
 }
