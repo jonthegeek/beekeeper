@@ -50,8 +50,7 @@ S7::method(as_bk_data, rapid::security_scheme_collection) <- function(x) {
 .security_scheme_description_fill <- function(description, type) {
   if (is.na(description)) {
     return(
-      switch(
-        type,
+      switch(type,
         api_key = .security_scheme_description_api_key(),
         NA_character_
       )
