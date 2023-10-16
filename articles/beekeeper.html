@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">beekeeper</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -106,13 +106,13 @@ Document to configure your package.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Note: Running these commands will create or overwrite "_beekeeper.yml" in your</span></span>
 <span><span class="co"># working directory.</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">url</a></span><span class="op">(</span><span class="st">"https://api.apis.guru/v2/openapi.yaml"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">url</a></span><span class="op">(</span><span class="st">"https://api.apis.guru/v2/openapi.yaml"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/use_beekeeper.html">use_beekeeper</a></span><span class="op">(</span></span>
 <span>    api_abbr <span class="op">=</span> <span class="st">"guru"</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Or for the FEC</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">url</a></span><span class="op">(</span><span class="st">"https://api.apis.guru/v2/specs/fec.gov/1.0/openapi.yaml"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">url</a></span><span class="op">(</span><span class="st">"https://api.apis.guru/v2/specs/fec.gov/1.0/openapi.yaml"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/use_beekeeper.html">use_beekeeper</a></span><span class="op">(</span></span>
 <span>    api_abbr <span class="op">=</span> <span class="st">"fec"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
