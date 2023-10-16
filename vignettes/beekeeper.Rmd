@@ -39,13 +39,13 @@ If your target API follows the OAS, you can use your API's OpenAPI Document to c
 ```{r config-guru}
 # Note: Running these commands will create or overwrite "_beekeeper.yml" in your
 # working directory.
-url("https://api.apis.guru/v2/openapi.yaml") |> 
+url("https://api.apis.guru/v2/openapi.yaml") |>
   use_beekeeper(
     api_abbr = "guru"
   )
 
 # Or for the FEC
-url("https://api.apis.guru/v2/specs/fec.gov/1.0/openapi.yaml") |> 
+url("https://api.apis.guru/v2/specs/fec.gov/1.0/openapi.yaml") |>
   use_beekeeper(
     api_abbr = "fec"
   )

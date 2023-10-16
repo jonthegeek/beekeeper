@@ -19,6 +19,6 @@
     method = method,
     user_agent = "{{pkg_agent}}"{{#has_security}},
     security_fn = {{api_abbr}}_security,
-    security_args = list({{security_args}}){{/has_security}}
+    security_args = list({{security_arg_list}}){{/has_security}}
   )
 }
