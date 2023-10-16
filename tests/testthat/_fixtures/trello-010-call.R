@@ -22,9 +22,6 @@ trello_call_api <- function(path,
     method = method,
     user_agent = "TESTPKG (https://example.com)",
     security_fn = trello_security,
-    security_args = list(
-      key = key,
-      token = token
-    )
+    security_args = list(key = key, token = token)
   )
 }

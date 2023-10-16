@@ -13,17 +13,17 @@
   return(req)
 }
 
-{{#api_schemes}}
+{{#security_schemes}}
 {{#description}}
 # {{description}}
 {{/description}}
-{{api_abbr}}_security_{{name}} <- function(req, {{arg_name}}) {
+{{api_abbr}}_security_{{name}} <- function(req, {{#api_key}}{{arg_name}}) {
   nectar::security_api_key(
     req,
     location = "{{location}}",
     parameter_name = "{{parameter_name}}",
     api_key = {{arg_name}}
   )
-}
+}{{/api_key}}
 
-{{/api_schemes}}
+{{/security_schemes}}

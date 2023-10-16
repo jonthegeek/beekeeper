@@ -17,15 +17,7 @@ generate_pkg <- function(config_file = "_beekeeper.yml",
   config <- .read_config(config_file)
   api_definition <- .read_api_definition(config_file, config$rapid_file)
   .prepare_r()
-
-  touched_files <- .generate_basics(
-    api_title = config$api_title,
-    api_abbr = config$api_abbr,
-    base_url = api_definition@servers@url,
-    pkg_agent = pkg_agent,
-    security_schemes = api_definition@components@security_schemes
-  )
-
+  touched_files <- .generate_basics(config, api_definition, pkg_agent)
   return(invisible(touched_files))
 }
 
@@ -35,17 +27,16 @@ generate_pkg <- function(config_file = "_beekeeper.yml",
   )
 }
 
-.generate_basics <- function(api_title,
-                             api_abbr,
-                             base_url,
-                             pkg_agent,
-                             security_schemes) {
-  security_data <- .generate_security(api_abbr, security_schemes)
+.generate_basics <- function(config, api_definition, pkg_agent) {
+  security_data <- .generate_security(
+    config$api_abbr,
+    api_definition@components@security_schemes
+  )
 
   data <- list(
-    api_title = .stabilize_chr_scalar_nonempty(api_title),
-    api_abbr = .stabilize_chr_scalar_nonempty(api_abbr),
-    base_url = .stabilize_chr_scalar_nonempty(base_url),
+    api_title = .stabilize_chr_scalar_nonempty(config$api_title),
+    api_abbr = .stabilize_chr_scalar_nonempty(config$api_abbr),
+    base_url = .stabilize_chr_scalar_nonempty(api_definition@servers@url),
     pkg_agent = .stabilize_chr_scalar_nonempty(pkg_agent)
   )
   data <- c(data, security_data)
@@ -58,7 +49,7 @@ generate_pkg <- function(config_file = "_beekeeper.yml",
     .bk_use_template(
       template = "test-010-call.R",
       dir = "tests/testthat",
-      data = list(api_abbr = api_abbr)
+      data = list(api_abbr = config$api_abbr)
     )
   )
   return(invisible(touched_files))
