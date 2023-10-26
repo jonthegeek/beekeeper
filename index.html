@@ -39,7 +39,7 @@
     
     <a class="navbar-brand me-2" href="index.html">beekeeper</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,30 +110,43 @@
 </ul>
 </li>
 <li>
-<strong>0.2.0: OAS definition discovery.</strong>
-<ul>
-<li>Add support for APIs using the OAS json format.</li>
-<li>Streamline discovery of API definitions (with associated error handling).</li>
+<input type="checkbox" disabled checked><strong>0.2.0: OAS definition discovery.</strong><ul class="task-list">
 <li>
-<strong>Potential challenges:</strong> There does not appear to be a set standard of where API definitions are posted on a given site. It might be difficult to help users find the right place. Interestingly, <a href="https://APIs.guru" class="external-link uri">https://APIs.guru</a> itself has a (simple) API to aid in API discovery, which might provide an opportunity to use beekeeper to generate parts of itself. <strong>UPDATE:</strong> I intend to put much of this functionality in a separate package, <a href="https://anyapi.api2r.org" class="external-link">{anyapi}</a>.</li>
+<input type="checkbox" disabled checked>Add support for APIs using the OAS json format.</li>
+<li>
+<input type="checkbox" disabled checked>Streamline discovery of API definitions (with associated error handling).<ul>
+<li>
+<strong>UPDATE:</strong> This functionality is in a separate package, <a href="https://anyapi.api2r.org" class="external-link">{anyapi}</a>.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
-<strong>0.3.0: Batching and rate limiting.</strong>
-<ul>
-<li>Add documentation for implementing batching and rate-limiting.</li>
-<li>If possible, export functionality to help implement these processes, but standards seem to vary widely.</li>
+<input type="checkbox" disabled><strong>0.3.0: Endpoint function scaffolding.</strong><ul class="task-list">
 <li>
-<strong>Potential challenges:</strong> This step will involve more reading and documenting than code, to gather examples of how different APIs implement limits and batching. It’s possible systems will be so different that it will be difficult to summarize them. For example, Slack has two separate batching systems in its API, with some functions moved to the newer system, and others not. <strong>UPDATE:</strong> The <a href="https://github.com/r-lib/httr2/" class="external-link">development version of {httr2}</a> has functionality to help with this quite a lot, thankfully!</li>
+<input type="checkbox" disabled>Generate R/<em>.R and tests/testthat/</em>.R files for all endpoints (“paths”) described in the given API specification.</li>
+<li>
+<input type="checkbox" disabled>The generated functions will work, but error checking, documentation, and tests will be minimal.</li>
+<li>
+<input type="checkbox" disabled><strong>Potential challenges:</strong> I’ll need to strike a balance here between getting a basic working system and producing something that can be easily expanded later.<ul>
+<li>
+<strong>Update:</strong> Also, this likely could go unsaid, but, if the API description is incorrect, the functions will not work as expected. Hopefully their error messages will be helpful for debugging, though!</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
-<strong>0.4.0: Endpoint function scaffolding.</strong>
-<ul>
-<li>Generate R/<em>.R and tests/testthat/</em>.R files for all endpoints (“paths”) described in the given API specification.</li>
-<li>The generated functions will work, but error checking, documentation, and tests will be minimal.</li>
+<input type="checkbox" disabled><strong>0.4.0: Batching and rate limiting.</strong><ul class="task-list">
 <li>
-<strong>Potential challenges:</strong> I’ll need to strike a balance here between getting a basic working system and producing something that can be easily expanded later.</li>
+<input type="checkbox" disabled>Add documentation for implementing batching and rate-limiting.</li>
+<li>
+<input type="checkbox" disabled>If possible, export functionality to help implement these processes, but standards seem to vary widely.</li>
+<li>
+<input type="checkbox" disabled><strong>Potential challenges:</strong> This step will involve more reading and documenting than code, to gather examples of how different APIs implement limits and batching. It’s possible systems will be so different that it will be difficult to summarize them. For example, Slack has two separate batching systems in its API, with some functions moved to the newer system, and others not.<ul>
+<li>
+<strong>UPDATE:</strong> The <a href="https://github.com/r-lib/httr2/" class="external-link">development version of {httr2}</a> has functionality to help with this quite a lot, thankfully! I’m skipping this milestone while that functionality stabilizes (this was previously 0.3.0).</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
