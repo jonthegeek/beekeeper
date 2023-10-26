@@ -34,10 +34,10 @@ generate_pkg <- function(config_file = "_beekeeper.yml",
   )
 
   data <- list(
-    api_title = .stabilize_chr_scalar_nonempty(config$api_title),
-    api_abbr = .stabilize_chr_scalar_nonempty(config$api_abbr),
-    base_url = .stabilize_chr_scalar_nonempty(api_definition@servers@url),
-    pkg_agent = .stabilize_chr_scalar_nonempty(pkg_agent)
+    api_title = nectar::stabilize_string(config$api_title),
+    api_abbr = nectar::stabilize_string(config$api_abbr),
+    base_url = nectar::stabilize_string(api_definition@servers@url),
+    pkg_agent = nectar::stabilize_string(pkg_agent)
   )
   data <- c(data, security_data)
 
