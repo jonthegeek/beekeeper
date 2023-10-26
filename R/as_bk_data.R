@@ -56,7 +56,7 @@ S7::method(as_bk_data, rapid::security_scheme_collection) <- function(x) {
       )
     )
   }
-  return(description)
+  return(description) # nocov
 }
 
 .security_scheme_description_api_key <- function() {

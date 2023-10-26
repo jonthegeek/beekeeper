@@ -27,7 +27,6 @@ Imports:
     rprojroot,
     S7,
     snakecase,
-    stbl,
     styler,
     testthat,
     usethis,
