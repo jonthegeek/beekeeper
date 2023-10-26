@@ -53,38 +53,39 @@ included in the grant proposal.
     the user (using API keys).
   - [x] Produce a vignette about configuring authentication. Folded into
     the main vignette since it’s suprisingly straightforward.
-- **0.2.0: OAS definition discovery.**
-  - Add support for APIs using the OAS json format.
-  - Streamline discovery of API definitions (with associated error
+- [x] **0.2.0: OAS definition discovery.**
+  - [x] Add support for APIs using the OAS json format.
+  - [x] Streamline discovery of API definitions (with associated error
     handling).
-  - **Potential challenges:** There does not appear to be a set standard
-    of where API definitions are posted on a given site. It might be
-    difficult to help users find the right place. Interestingly,
-    <https://APIs.guru> itself has a (simple) API to aid in API
-    discovery, which might provide an opportunity to use beekeeper to
-    generate parts of itself. **UPDATE:** I intend to put much of this
-    functionality in a separate package,
-    [{anyapi}](https://anyapi.api2r.org).
-- **0.3.0: Batching and rate limiting.**
-  - Add documentation for implementing batching and rate-limiting.
-  - If possible, export functionality to help implement these processes,
-    but standards seem to vary widely.
-  - **Potential challenges:** This step will involve more reading and
-    documenting than code, to gather examples of how different APIs
+    - **UPDATE:** This functionality is in a separate package,
+      [{anyapi}](https://anyapi.api2r.org).
+- [ ] **0.3.0: Endpoint function scaffolding.**
+  - [ ] Generate R/*.R and tests/testthat/*.R files for all endpoints
+    (“paths”) described in the given API specification.
+  - [ ] The generated functions will work, but error checking,
+    documentation, and tests will be minimal.
+  - [ ] **Potential challenges:** I’ll need to strike a balance here
+    between getting a basic working system and producing something that
+    can be easily expanded later.
+    - **Update:** Also, this likely could go unsaid, but, if the API
+      description is incorrect, the functions will not work as expected.
+      Hopefully their error messages will be helpful for debugging,
+      though!
+- [ ] **0.4.0: Batching and rate limiting.**
+  - [ ] Add documentation for implementing batching and rate-limiting.
+  - [ ] If possible, export functionality to help implement these
+    processes, but standards seem to vary widely.
+  - [ ] **Potential challenges:** This step will involve more reading
+    and documenting than code, to gather examples of how different APIs
     implement limits and batching. It’s possible systems will be so
     different that it will be difficult to summarize them. For example,
     Slack has two separate batching systems in its API, with some
-    functions moved to the newer system, and others not. **UPDATE:** The
-    [development version of {httr2}](https://github.com/r-lib/httr2/)
-    has functionality to help with this quite a lot, thankfully!
-- **0.4.0: Endpoint function scaffolding.**
-  - Generate R/*.R and tests/testthat/*.R files for all endpoints
-    (“paths”) described in the given API specification.
-  - The generated functions will work, but error checking,
-    documentation, and tests will be minimal.
-  - **Potential challenges:** I’ll need to strike a balance here between
-    getting a basic working system and producing something that can be
-    easily expanded later.
+    functions moved to the newer system, and others not.
+    - **UPDATE:** The [development version of
+      {httr2}](https://github.com/r-lib/httr2/) has functionality to
+      help with this quite a lot, thankfully! I’m skipping this
+      milestone while that functionality stabilizes (this was previously
+      0.3.0).
 - **0.5.0: More robust scaffolding.**
   - Add parameter documentation.
   - Also add parameter type checking.
