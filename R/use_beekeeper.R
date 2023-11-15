@@ -6,7 +6,7 @@
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param x An object to use to define the configuration, such as a
-#'   [rapid::rapid()] or a url to an OpenAPI document.
+#'   [rapid::class_rapid()] or a url to an OpenAPI document.
 #' @param api_abbr A short (about 2-5 letter) abbreviation for the API, for use
 #'   in function names and environment variables.
 #' @param config_file The path to the configuration file to write.
@@ -30,7 +30,7 @@ use_beekeeper <- S7::new_generic(
 )
 
 #' @importFrom usethis use_build_ignore
-S7::method(use_beekeeper, rapid::rapid) <-
+S7::method(use_beekeeper, rapid::class_rapid) <-
   function(x,
            api_abbr,
            ...,
@@ -63,7 +63,13 @@ S7::method(use_beekeeper, S7::class_any) <-
            config_file = "_beekeeper.yml",
            rapid_file = "_beekeeper_rapid.rds") {
     x <- as_rapid(x)
-    use_beekeeper(x, api_abbr, ..., config_file = config_file)
+    use_beekeeper(
+      x,
+      api_abbr,
+      ...,
+      config_file = config_file,
+      rapid_file = rapid_file
+    )
   }
 
 .read_config <- function(config_file = "_beekeeper.yml") {

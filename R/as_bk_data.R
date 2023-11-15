@@ -4,7 +4,7 @@
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param x The object to coerce. Currently supports conversion of
-#'   [security_scheme_collection()] objects.
+#'   [rapid::class_security_schemes()] objects.
 #'
 #' @return A list.
 #' @keywords internal
@@ -13,7 +13,7 @@ as_bk_data <- S7::new_generic(
   dispatch_args = "x"
 )
 
-S7::method(as_bk_data, rapid::security_scheme_collection) <- function(x) {
+S7::method(as_bk_data, rapid::class_security_schemes) <- function(x) {
   if (!length(x)) {
     return(list())
   }
@@ -109,11 +109,11 @@ S7::method(as_bk_data, rapid::security_scheme_collection) <- function(x) {
   )
 }
 
-S7::method(as_bk_data, rapid::security_scheme_details) <- function(x) {
+S7::method(as_bk_data, rapid::class_security_scheme_details) <- function(x) {
   purrr::map(x, as_bk_data)
 }
 
-S7::method(as_bk_data, rapid::api_key_security_scheme) <- function(x) {
+S7::method(as_bk_data, rapid::class_api_key_security_scheme) <- function(x) {
   if (length(x)) {
     return(
       list(
@@ -133,12 +133,12 @@ S7::method(as_bk_data, rapid::api_key_security_scheme) <- function(x) {
 
 S7::method(as_bk_data, S7::class_any) <- function(x) {
   cli::cli_warn(
-    "No method for as_bk_data() for class {.cls class(x)}."
+    "No method for as_bk_data() for class {.cls {class(x)}}."
   )
   return(list())
 }
 
-# S7::method(as_bk_data, rapid::oauth2_authorization_code_flow) <- function(x) {
+# S7::method(as_bk_data, rapid::class_oauth2_authorization_code_flow) <- function(x) {
 #   if (!length(x)) {
 #     return(list())
 #   }
@@ -152,7 +152,7 @@ S7::method(as_bk_data, S7::class_any) <- function(x) {
 #   )
 # }
 
-# S7::method(as_bk_data, rapid::oauth2_implicit_flow) <- function(x) {
+# S7::method(as_bk_data, rapid::class_oauth2_implicit_flow) <- function(x) {
 #   if (!length(x)) {
 #     return(list())
 #   }
@@ -165,7 +165,7 @@ S7::method(as_bk_data, S7::class_any) <- function(x) {
 #   )
 # }
 
-# S7::method(as_bk_data, rapid::scopes) <- function(x) {
+# S7::method(as_bk_data, rapid::class_scopes) <- function(x) {
 #   if (!length(x)) {
 #     return(list())
 #   }
@@ -177,7 +177,7 @@ S7::method(as_bk_data, S7::class_any) <- function(x) {
 #   )
 # }
 
-# S7::method(as_bk_data, rapid::oauth2_token_flow) <- function(x) {
+# S7::method(as_bk_data, rapid::class_oauth2_token_flow) <- function(x) {
 #   if (!length(x)) {
 #     return(list())
 #   }
@@ -190,7 +190,7 @@ S7::method(as_bk_data, S7::class_any) <- function(x) {
 #   )
 # }
 
-# S7::method(as_bk_data, rapid::oauth2_security_scheme) <- function(x) {
+# S7::method(as_bk_data, rapid::class_oauth2_security_scheme) <- function(x) {
 #   if (!length(x)) {
 #     return(list())
 #   }

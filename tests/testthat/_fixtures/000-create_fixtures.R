@@ -5,7 +5,6 @@ config_path <- test_path(glue::glue("_fixtures/{api_abbr}_beekeeper.yml"))
 apid_url |>
   url() |>
   use_beekeeper(
-    rapid,
     api_abbr = api_abbr,
     config_file = config_path,
     rapid_file = rapid_write_path
@@ -18,7 +17,6 @@ config_path <- test_path(glue::glue("_fixtures/{api_abbr}_beekeeper.yml"))
 apid_url |>
   url() |>
   use_beekeeper(
-    rapid,
     api_abbr = api_abbr,
     config_file = config_path,
     rapid_file = rapid_write_path
@@ -31,7 +29,6 @@ config_path <- test_path(glue::glue("_fixtures/{api_abbr}_beekeeper.yml"))
 apid_url |>
   url() |>
   use_beekeeper(
-    rapid,
     api_abbr = api_abbr,
     config_file = config_path,
     rapid_file = rapid_write_path
