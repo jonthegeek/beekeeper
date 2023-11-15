@@ -8,7 +8,7 @@ as_bk_data(x, ...)
 }
 \arguments{
 \item{x}{The object to coerce. Currently supports conversion of
-\code{\link[=security_scheme_collection]{security_scheme_collection()}} objects.}
+\code{\link[rapid:class_security_schemes]{rapid::class_security_schemes()}} objects.}
 
 \item{...}{These dots are for future extensions and must be empty.}
 }

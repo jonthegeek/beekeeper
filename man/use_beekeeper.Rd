@@ -14,7 +14,7 @@ use_beekeeper(
 }
 \arguments{
 \item{x}{An object to use to define the configuration, such as a
-\code{\link[rapid:rapid]{rapid::rapid()}} or a url to an OpenAPI document.}
+\code{\link[rapid:class_rapid]{rapid::class_rapid()}} or a url to an OpenAPI document.}
 
 \item{api_abbr}{A short (about 2-5 letter) abbreviation for the API, for use
 in function names and environment variables.}
