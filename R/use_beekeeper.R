@@ -25,20 +25,20 @@ use_beekeeper <- function(x,
                           config_file = "_beekeeper.yml",
                           rapid_file = "_beekeeper_rapid.rds") {
   x <- as_rapid(x)
-  api_abbr <- nectar::stabilize_string(api_abbr)
-  config_file <- nectar::stabilize_string(config_file)
-  rapid_file <- nectar::stabilize_string(rapid_file)
+  api_abbr <- stabilize_string(api_abbr)
+  config_file <- stabilize_string(config_file)
+  rapid_file <- stabilize_string(rapid_file)
   saveRDS(x, rapid_file)
 
   use_build_ignore(c(config_file, rapid_file))
 
-  yaml::write_yaml(
+  write_yaml(
     list(
       api_title = x@info@title,
       api_abbr = api_abbr,
       api_version = x@info@version,
-      rapid_file = fs::path_rel(rapid_file, fs::path_dir(config_file)),
-      updated_on = as.character(lubridate::now(tzone = "UTC"))
+      rapid_file = path_rel(rapid_file, path_dir(config_file)),
+      updated_on = as.character(now(tzone = "UTC"))
     ),
     file = config_file
   )
@@ -46,8 +46,8 @@ use_beekeeper <- function(x,
 }
 
 .read_config <- function(config_file = "_beekeeper.yml") {
-  config <- yaml::read_yaml(config_file)
-  config$updated_on <- lubridate::parse_date_time(
+  config <- read_yaml(config_file)
+  config$updated_on <- parse_date_time(
     config$updated_on,
     orders = c("ymd HMS", "ymd H", "ymd")
   )

@@ -23,7 +23,7 @@ generate_pkg <- function(config_file = "_beekeeper.yml",
 
 .read_api_definition <- function(config_file, rapid_file) {
   readRDS(
-    fs::path(fs::path_dir(config_file), rapid_file)
+    path(path_dir(config_file), rapid_file)
   )
 }
 
@@ -34,10 +34,10 @@ generate_pkg <- function(config_file = "_beekeeper.yml",
   )
 
   data <- list(
-    api_title = nectar::stabilize_string(config$api_title),
-    api_abbr = nectar::stabilize_string(config$api_abbr),
-    base_url = nectar::stabilize_string(api_definition@servers@url),
-    pkg_agent = nectar::stabilize_string(pkg_agent)
+    api_title = stabilize_string(config$api_title),
+    api_abbr = stabilize_string(config$api_abbr),
+    base_url = stabilize_string(api_definition@servers@url),
+    pkg_agent = stabilize_string(pkg_agent)
   )
   data <- c(data, security_data)
 
@@ -56,11 +56,11 @@ generate_pkg <- function(config_file = "_beekeeper.yml",
 }
 
 .prepare_r <- function() {
-  usethis::use_directory("R")
-  usethis::use_testthat()
-  purrr::quietly(httptest2::use_httptest2)()
-  usethis::use_package("nectar")
-  usethis::use_package("beekeeper", type = "Suggests")
+  use_directory("R")
+  use_testthat()
+  quietly(use_httptest2)()
+  use_package("nectar")
+  use_package("beekeeper", type = "Suggests")
 }
 
 #' Use a template in this package
@@ -75,17 +75,17 @@ generate_pkg <- function(config_file = "_beekeeper.yml",
                              dir = c("R", "tests/testthat"),
                              data) {
   dir <- match.arg(dir)
-  target <- usethis::proj_path(dir, template)
-  save_as <- fs::path_rel(target, usethis::proj_path())
+  target <- proj_path(dir, template)
+  save_as <- path_rel(target, proj_path())
 
-  usethis::use_template(
+  use_template(
     template = template,
     save_as = save_as,
     data = data,
     package = "beekeeper"
   )
-  utils::capture.output({
-    styler::style_file(target)
+  capture.output({
+    style_file(target)
   })
 
   return(invisible(target))

@@ -29,6 +29,7 @@ Imports:
     rprojroot,
     S7,
     snakecase,
+    stringr,
     styler,
     testthat,
     usethis,
@@ -38,7 +39,6 @@ Suggests:
     covr,
     knitr,
     rmarkdown,
-    stringr,
     withr
 VignetteBuilder: 
     knitr

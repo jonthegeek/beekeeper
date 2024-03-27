@@ -13,7 +13,7 @@ as_bk_data <- S7::new_generic(
   dispatch_args = "x"
 )
 
-S7::method(as_bk_data, rapid::class_security_schemes) <- function(x) {
+S7::method(as_bk_data, class_security_schemes) <- function(x) {
   if (!length(x)) {
     return(list())
   }
@@ -22,7 +22,7 @@ S7::method(as_bk_data, rapid::class_security_schemes) <- function(x) {
 }
 
 .security_schemes_collect <- function(x) {
-  purrr::pmap(
+  pmap(
     list(
       x@name,
       x@details,
@@ -35,7 +35,7 @@ S7::method(as_bk_data, rapid::class_security_schemes) <- function(x) {
 .security_scheme_rotate <- function(name, details, description) {
   security_scheme <- c(
     list(
-      name = snakecase::to_snake_case(name),
+      name = to_snake_case(name),
       description = description
     ),
     as_bk_data(details)
@@ -79,7 +79,7 @@ S7::method(as_bk_data, rapid::class_security_schemes) <- function(x) {
 }
 
 .security_args_compile <- function(security_schemes) {
-  security_args <- sort(unique(purrr::map_chr(security_schemes, "arg_name")))
+  security_args <- sort(unique(map_chr(security_schemes, "arg_name")))
   return(list(
     security_arg_names = security_args,
     security_arg_list = .collapse_comma(
@@ -93,13 +93,13 @@ S7::method(as_bk_data, rapid::class_security_schemes) <- function(x) {
 }
 
 .security_arg_help_generate <- function(security_schemes, security_args) {
-  security_arg_description <- rlang::set_names(
-    purrr::map_chr(security_schemes, "description"),
-    purrr::map_chr(security_schemes, "arg_name")
+  security_arg_description <- set_names(
+    map_chr(security_schemes, "description"),
+    map_chr(security_schemes, "arg_name")
   )
   security_arg_description <- unname(security_arg_description[security_args])
   return(
-    purrr::map2(
+    map2(
       security_arg_description,
       security_args,
       function(arg_description, arg_name) {
@@ -109,17 +109,17 @@ S7::method(as_bk_data, rapid::class_security_schemes) <- function(x) {
   )
 }
 
-S7::method(as_bk_data, rapid::class_security_scheme_details) <- function(x) {
-  purrr::map(x, as_bk_data)
+S7::method(as_bk_data, class_security_scheme_details) <- function(x) {
+  map(x, as_bk_data)
 }
 
-S7::method(as_bk_data, rapid::class_api_key_security_scheme) <- function(x) {
+S7::method(as_bk_data, class_api_key_security_scheme) <- function(x) {
   if (length(x)) {
     return(
       list(
         parameter_name = x@parameter_name,
         arg_name = stringr::str_remove(
-          snakecase::to_snake_case(x@parameter_name),
+          to_snake_case(x@parameter_name),
           "^x_"
         ),
         location = x@location,
@@ -131,8 +131,8 @@ S7::method(as_bk_data, rapid::class_api_key_security_scheme) <- function(x) {
   return(list())
 }
 
-S7::method(as_bk_data, S7::class_any) <- function(x) {
-  cli::cli_warn(
+S7::method(as_bk_data, class_any) <- function(x) {
+  cli_warn(
     "No method for as_bk_data() for class {.cls {class(x)}}."
   )
   return(list())

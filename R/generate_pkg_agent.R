@@ -8,10 +8,10 @@
 #'
 #' @export
 generate_pkg_agent <- function(path = ".") {
-  if (!fs::is_dir(path) && fs::path_file(path) != "DESCRIPTION") {
-    path <- fs::path_dir(path) # nocov
+  if (!is_dir(path) && path_file(path) != "DESCRIPTION") {
+    path <- path_dir(path) # nocov
   }
-  pkg_desc <- desc::desc(file = path)
+  pkg_desc <- desc(file = path)
   pkg_name <- pkg_desc$get_field("Package")
   pkg_url_glue <- ""
   pkg_url <- pkg_desc$get_urls()
