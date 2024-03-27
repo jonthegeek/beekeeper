@@ -17,8 +17,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Rapidly Scaffold API Client Packages">
 <meta property="og:description" content="Automatically generate R package skeletons from application
@@ -90,31 +90,28 @@
 <p>This is a rough outline of the planned development milestones of this package, working toward a stable version 1.0.0. Most of the outline was included in the grant proposal.</p>
 <ul>
 <li>
-<input type="checkbox" disabled checked><strong>pre-0.1.0: Infrastructure.</strong><ul class="task-list">
-<li>
-<input type="checkbox" disabled checked>I split the OpenAPI-parsing functionality into a separate package, <a href="https://rapid.api2r.org" class="external-link">{rapid}</a>. That package is being developed parallel to this one, and contains all of the <em>R API D</em>efinition-specific functionality.</li>
-<li>
-<input type="checkbox" disabled checked>I also realized I need a package for wrapping {httr2} calls. That package is called <a href="https://nectar.api2r.org" class="external-link">{nectar}</a>, and is also being developed parallel to this one.</li>
+<label><input type="checkbox" checked><strong>pre-0.1.0: Infrastructure.</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox" checked>I split the OpenAPI-parsing functionality into a separate package, <a href="https://rapid.api2r.org" class="external-link">{rapid}</a>. That package is being developed parallel to this one, and contains all of the <em>R API D</em>efinition-specific functionality.</label></li>
+<li><label><input type="checkbox" checked>I also realized I need a package for wrapping {httr2} calls. That package is called <a href="https://nectar.api2r.org" class="external-link">{nectar}</a>, and is also being developed parallel to this one.</label></li>
 </ul>
 </li>
 <li>
-<input type="checkbox" disabled checked><strong>0.1.0: Basic authentication and endpoint calls.</strong><ul class="task-list">
-<li>
-<input type="checkbox" disabled checked>Export a function or functions to generate <code>R/*.R</code> files to call an API, given the URL of an OpenAPI spec in YAML format (or a <code><a href="https://jonthegeek.github.io/rapid/reference/class_rapid.html" class="external-link">rapid::class_rapid()</a></code> object). The generated files will follow and encourage best practices, and will serve as the core around which the rest of a package would be built.</li>
-<li>
-<input type="checkbox" disabled checked>Also generate a <code>tests/testthat/*.R</code> file for that generated function.</li>
-<li>
-<input type="checkbox" disabled checked>Generate <code>R/*.R</code> and <code>tests/testthat/*.R</code> files to authenticate the user (using API keys).</li>
-<li>
-<input type="checkbox" disabled checked>Produce a vignette about configuring authentication. Folded into the main vignette since it’s suprisingly straightforward.</li>
+<label><input type="checkbox" checked><strong>0.1.0: Basic authentication and endpoint calls.</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox" checked>Export a function or functions to generate <code>R/*.R</code> files to call an API, given the URL of an OpenAPI spec in YAML format (or a <code><a href="https://jonthegeek.github.io/rapid/reference/class_rapid.html" class="external-link">rapid::class_rapid()</a></code> object). The generated files will follow and encourage best practices, and will serve as the core around which the rest of a package would be built.</label></li>
+<li><label><input type="checkbox" checked>Also generate a <code>tests/testthat/*.R</code> file for that generated function.</label></li>
+<li><label><input type="checkbox" checked>Generate <code>R/*.R</code> and <code>tests/testthat/*.R</code> files to authenticate the user (using API keys).</label></li>
+<li><label><input type="checkbox" checked>Produce a vignette about configuring authentication. Folded into the main vignette since it’s suprisingly straightforward.</label></li>
 </ul>
 </li>
 <li>
-<input type="checkbox" disabled checked><strong>0.2.0: OAS definition discovery.</strong><ul class="task-list">
+<label><input type="checkbox" checked><strong>0.2.0: OAS definition discovery.</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox" checked>Add support for APIs using the OAS json format.</label></li>
 <li>
-<input type="checkbox" disabled checked>Add support for APIs using the OAS json format.</li>
-<li>
-<input type="checkbox" disabled checked>Streamline discovery of API definitions (with associated error handling).<ul>
+<label><input type="checkbox" checked>Streamline discovery of API definitions (with associated error handling).</label>
+<ul>
 <li>
 <strong>UPDATE:</strong> This functionality is in a separate package, <a href="https://anyapi.api2r.org" class="external-link">{anyapi}</a>.</li>
 </ul>
@@ -122,13 +119,13 @@
 </ul>
 </li>
 <li>
-<input type="checkbox" disabled><strong>0.3.0: Endpoint function scaffolding.</strong><ul class="task-list">
+<label><input type="checkbox"><strong>0.3.0: Endpoint function scaffolding.</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Generate R/<em>.R and tests/testthat/</em>.R files for all endpoints (“paths”) described in the given API specification.</label></li>
+<li><label><input type="checkbox">The generated functions will work, but error checking, documentation, and tests will be minimal.</label></li>
 <li>
-<input type="checkbox" disabled>Generate R/<em>.R and tests/testthat/</em>.R files for all endpoints (“paths”) described in the given API specification.</li>
-<li>
-<input type="checkbox" disabled>The generated functions will work, but error checking, documentation, and tests will be minimal.</li>
-<li>
-<input type="checkbox" disabled><strong>Potential challenges:</strong> I’ll need to strike a balance here between getting a basic working system and producing something that can be easily expanded later.<ul>
+<label><input type="checkbox"><strong>Potential challenges:</strong> I’ll need to strike a balance here between getting a basic working system and producing something that can be easily expanded later.</label>
+<ul>
 <li>
 <strong>Update:</strong> Also, this likely could go unsaid, but, if the API description is incorrect, the functions will not work as expected. Hopefully their error messages will be helpful for debugging, though!</li>
 </ul>
@@ -136,13 +133,13 @@
 </ul>
 </li>
 <li>
-<input type="checkbox" disabled><strong>0.4.0: Batching and rate limiting.</strong><ul class="task-list">
+<label><input type="checkbox"><strong>0.4.0: Batching and rate limiting.</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Add documentation for implementing batching and rate-limiting.</label></li>
+<li><label><input type="checkbox">If possible, export functionality to help implement these processes, but standards seem to vary widely.</label></li>
 <li>
-<input type="checkbox" disabled>Add documentation for implementing batching and rate-limiting.</li>
-<li>
-<input type="checkbox" disabled>If possible, export functionality to help implement these processes, but standards seem to vary widely.</li>
-<li>
-<input type="checkbox" disabled><strong>Potential challenges:</strong> This step will involve more reading and documenting than code, to gather examples of how different APIs implement limits and batching. It’s possible systems will be so different that it will be difficult to summarize them. For example, Slack has two separate batching systems in its API, with some functions moved to the newer system, and others not.<ul>
+<label><input type="checkbox"><strong>Potential challenges:</strong> This step will involve more reading and documenting than code, to gather examples of how different APIs implement limits and batching. It’s possible systems will be so different that it will be difficult to summarize them. For example, Slack has two separate batching systems in its API, with some functions moved to the newer system, and others not.</label>
+<ul>
 <li>
 <strong>UPDATE:</strong> The <a href="https://github.com/r-lib/httr2/" class="external-link">development version of {httr2}</a> has functionality to help with this quite a lot, thankfully! I’m skipping this milestone while that functionality stabilizes (this was previously 0.3.0).</li>
 </ul>
