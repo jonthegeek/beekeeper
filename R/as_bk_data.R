@@ -51,7 +51,7 @@ S7::method(as_bk_data, class_security_schemes) <- function(x) {
   if (is.na(description)) {
     return(
       switch(type,
-        api_key = .security_scheme_description_api_key(),
+        api_key = .security_scheme_description_api_key,
         NA_character_
       )
     )
@@ -59,13 +59,11 @@ S7::method(as_bk_data, class_security_schemes) <- function(x) {
   return(description) # nocov
 }
 
-.security_scheme_description_api_key <- function() {
-  paste(
-    "An API key provided by the API provider.",
-    "This key is not clearly documented in the API description.",
-    "Check the API documentation for details."
-  )
-}
+.security_scheme_description_api_key <- paste(
+  "An API key provided by the API provider.",
+  "This key is not clearly documented in the API description.",
+  "Check the API documentation for details."
+)
 
 .security_scheme_collection_finalize <- function(security_schemes) {
   security_scheme_data <- c(
@@ -85,14 +83,14 @@ S7::method(as_bk_data, class_security_schemes) <- function(x) {
     security_arg_list = .collapse_comma(
       glue("{security_args} = {security_args}")
     ),
-    security_arg_helps = .security_arg_help_generate(
+    security_arg_helps = .generate_security_arg_help(
       security_schemes,
       security_args
     )
   ))
 }
 
-.security_arg_help_generate <- function(security_schemes, security_args) {
+.generate_security_arg_help <- function(security_schemes, security_args) {
   security_arg_description <- set_names(
     map_chr(security_schemes, "description"),
     map_chr(security_schemes, "arg_name")
@@ -102,11 +100,13 @@ S7::method(as_bk_data, class_security_schemes) <- function(x) {
     map2(
       security_arg_description,
       security_args,
-      function(arg_description, arg_name) {
-        list(name = arg_name, description = arg_description)
-      }
+      .security_arg_description_clean
     )
   )
+}
+
+.security_arg_description_clean <- function(arg_description, arg_name) {
+  list(name = arg_name, description = arg_description)
 }
 
 S7::method(as_bk_data, class_security_scheme_details) <- function(x) {
@@ -118,10 +118,7 @@ S7::method(as_bk_data, class_api_key_security_scheme) <- function(x) {
     return(
       list(
         parameter_name = x@parameter_name,
-        arg_name = stringr::str_remove(
-          to_snake_case(x@parameter_name),
-          "^x_"
-        ),
+        arg_name = str_remove(to_snake_case(x@parameter_name), "^x_"),
         location = x@location,
         type = "api_key",
         api_key = TRUE

@@ -5,6 +5,7 @@ create_local_package <- function(pkgname = "testpkg",
   withr::local_options(usethis.quiet = TRUE, .local_envir = env)
 
   dir <- withr::local_tempdir(pattern = pkgname, .local_envir = env)
+  dir <- unclass(fs::path_norm(dir))
 
   usethis::create_package(
     dir,

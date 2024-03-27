@@ -25,31 +25,31 @@ use_beekeeper <- function(x,
                           config_file = "_beekeeper.yml",
                           rapid_file = "_beekeeper_rapid.rds") {
   x <- as_rapid(x)
-  api_abbr <- stabilize_string(api_abbr)
-  config_file <- stabilize_string(config_file)
+  rapid_file <- .write_rapid(x, rapid_file)
+  config_file <- .write_config(x, api_abbr, rapid_file, config_file)
+
+  return(invisible(config_file))
+}
+
+.write_rapid <- function(x, rapid_file) {
   rapid_file <- stabilize_string(rapid_file)
   saveRDS(x, rapid_file)
+  use_build_ignore(rapid_file)
+  return(rapid_file)
+}
 
-  use_build_ignore(c(config_file, rapid_file))
-
+.write_config <- function(x, api_abbr, rapid_file, config_file) {
+  config_file <- stabilize_string(config_file)
   write_yaml(
     list(
       api_title = x@info@title,
-      api_abbr = api_abbr,
+      api_abbr = stabilize_string(api_abbr),
       api_version = x@info@version,
       rapid_file = path_rel(rapid_file, path_dir(config_file)),
       updated_on = as.character(now(tzone = "UTC"))
     ),
     file = config_file
   )
-  return(invisible(config_file))
-}
-
-.read_config <- function(config_file = "_beekeeper.yml") {
-  config <- read_yaml(config_file)
-  config$updated_on <- parse_date_time(
-    config$updated_on,
-    orders = c("ymd HMS", "ymd H", "ymd")
-  )
-  return(config)
+  use_build_ignore(config_file)
+  return(config_file)
 }

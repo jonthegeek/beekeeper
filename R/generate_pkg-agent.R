@@ -13,6 +13,13 @@ generate_pkg_agent <- function(path = ".") {
   }
   pkg_desc <- desc(file = path)
   pkg_name <- pkg_desc$get_field("Package")
+  pkg_url <- .get_pkg_url(pkg_desc)
+  return(
+    glue("{pkg_name}{pkg_url}")
+  )
+}
+
+.get_pkg_url <- function(pkg_desc) {
   pkg_url_glue <- ""
   pkg_url <- pkg_desc$get_urls()
   if (length(pkg_url)) {
@@ -20,7 +27,5 @@ generate_pkg_agent <- function(path = ".") {
       " ({pkg_url[[1]]})"
     )
   }
-  return(
-    glue("{pkg_name}{pkg_url_glue}")
-  )
+  return(pkg_url_glue)
 }
