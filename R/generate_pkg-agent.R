@@ -8,19 +8,24 @@
 #'
 #' @export
 generate_pkg_agent <- function(path = ".") {
-  if (!fs::is_dir(path) && fs::path_file(path) != "DESCRIPTION") {
-    path <- fs::path_dir(path) # nocov
+  if (!is_dir(path) && path_file(path) != "DESCRIPTION") {
+    path <- path_dir(path) # nocov
   }
-  pkg_desc <- desc::desc(file = path)
+  pkg_desc <- desc(file = path)
   pkg_name <- pkg_desc$get_field("Package")
+  pkg_url <- .get_pkg_url(pkg_desc)
+  return(
+    glue("{pkg_name}{pkg_url}")
+  )
+}
+
+.get_pkg_url <- function(pkg_desc) {
   pkg_url_glue <- ""
   pkg_url <- pkg_desc$get_urls()
   if (length(pkg_url)) {
-    pkg_url_glue <- glue::glue(
+    pkg_url_glue <- glue(
       " ({pkg_url[[1]]})"
     )
   }
-  return(
-    glue::glue("{pkg_name}{pkg_url_glue}")
-  )
+  return(pkg_url_glue)
 }
