@@ -13,9 +13,9 @@
 }
 
 .security_signature_generate <- function(security_arg_names, api_abbr) {
-  env_vars <- toupper(glue::glue("{api_abbr}_{security_arg_names}"))
+  env_vars <- toupper(glue("{api_abbr}_{security_arg_names}"))
   return(
-    .collapse_comma_newline(c("", glue::glue(
+    .collapse_comma_newline(c("", glue(
       "{security_arg_names} = Sys.getenv(\"{env_vars}\")"
     )))
   )

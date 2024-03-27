@@ -16,11 +16,11 @@ generate_pkg_agent <- function(path = ".") {
   pkg_url_glue <- ""
   pkg_url <- pkg_desc$get_urls()
   if (length(pkg_url)) {
-    pkg_url_glue <- glue::glue(
+    pkg_url_glue <- glue(
       " ({pkg_url[[1]]})"
     )
   }
   return(
-    glue::glue("{pkg_name}{pkg_url_glue}")
+    glue("{pkg_name}{pkg_url_glue}")
   )
 }

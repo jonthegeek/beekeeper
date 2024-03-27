@@ -8,6 +8,7 @@
 #' @importFrom rapid as_rapid
 #' @importFrom rlang .data
 #' @importFrom testthat test_that
+#' @importFrom usethis use_build_ignore
 #' @importFrom usethis use_package
 ## usethis namespace: end
 NULL

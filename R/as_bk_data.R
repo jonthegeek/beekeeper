@@ -83,7 +83,7 @@ S7::method(as_bk_data, rapid::class_security_schemes) <- function(x) {
   return(list(
     security_arg_names = security_args,
     security_arg_list = .collapse_comma(
-      glue::glue("{security_args} = {security_args}")
+      glue("{security_args} = {security_args}")
     ),
     security_arg_helps = .security_arg_help_generate(
       security_schemes,
