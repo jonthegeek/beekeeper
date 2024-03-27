@@ -13,3 +13,7 @@
 .collapse_comma_newline <- function(x) {
   glue_collapse(x, sep = ",\n")
 }
+
+.to_snake <- function(x) {
+  to_snake_case(x, parsing_option = 3)
+}
