@@ -27,6 +27,7 @@
 #' @importFrom rapid class_security_scheme_details
 #' @importFrom rapid class_security_schemes
 #' @importFrom rlang .data
+#' @importFrom rlang check_dots_empty
 #' @importFrom rlang set_names
 #' @importFrom rlang try_fetch
 #' @importFrom rprojroot find_package_root_file

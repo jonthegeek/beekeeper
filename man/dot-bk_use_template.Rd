@@ -4,14 +4,24 @@
 \alias{.bk_use_template}
 \title{Use a template in this package}
 \usage{
-.bk_use_template(template, dir = c("R", "tests/testthat"), data)
+.bk_use_template(
+  template,
+  data,
+  ...,
+  target = template,
+  dir = c("R", "tests/testthat")
+)
 }
 \arguments{
 \item{template}{The name of the template.}
 
-\item{dir}{The directory where the file should be created.}
-
 \item{data}{A list of variables to apply to the template.}
+
+\item{...}{These dots are for future extensions and must be empty.}
+
+\item{target}{The name of the file to create.}
+
+\item{dir}{The directory where the file should be created.}
 }
 \value{
 The path to the generated or updated file, invisibly.
