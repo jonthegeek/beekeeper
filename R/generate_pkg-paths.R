@@ -23,13 +23,13 @@ NULL
 }
 
 .generate_paths_files <- function(paths_by_tag, api_abbr, security_data) {
-  paths_file_paths <- purrr::imap_chr(
+  paths_file_paths <- imap_chr(
     paths_by_tag,
     function(path_tag, path_tag_name) {
       .generate_paths_file(path_tag, path_tag_name, api_abbr, security_data)
     }
   )
-  paths_test_paths <- purrr::imap_chr(
+  paths_test_paths <- imap_chr(
     paths_by_tag,
     function(path_tag, path_tag_name) {
       .generate_paths_test_file(path_tag, path_tag_name, api_abbr)
