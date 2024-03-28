@@ -27,6 +27,11 @@ generate_pkg <- function(config_file = "_beekeeper.yml",
     api_definition@components@security_schemes
   )
   call_files <- .generate_call(config, api_definition, pkg_agent, security_data)
-  touched_files <- c(call_files, security_data$security_file_path)
+  path_files <- .generate_paths(
+    api_definition@paths,
+    config$api_abbr,
+    security_data
+  )
+  touched_files <- c(call_files, security_data$security_file_path, path_files)
   return(invisible(touched_files))
 }
