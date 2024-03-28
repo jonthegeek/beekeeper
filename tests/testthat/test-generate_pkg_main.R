@@ -13,7 +13,9 @@ test_that("generate_pkg() returns a vector of created files", {
     c(
       "/R/010-call.R",
       "/tests/testthat/test-010-call.R",
-      "/R/paths-apis.R"
+      "/R/paths-apis.R",
+      "/tests/testthat/test-paths-apis.R",
+      "/tests/testthat/setup.R"
     )
   )
 

@@ -23,6 +23,10 @@
 .bk_use_template_impl <- function(template, data, target, dir) {
   target <- proj_path(dir, target)
   save_as <- path_rel(target, proj_path())
+  if (fs::file_exists(target)) {
+    # TODO: Intelligently prompt about this.
+    fs::file_delete(target)
+  }
   use_template(
     template = template,
     save_as = save_as,

@@ -1,11 +1,9 @@
 #' @include as_bk_data.R
 NULL
 
-.generate_paths <- function(paths, api_abbr, security_data) {
-  # TODO: Implement as_bk_data for paths. Return should be a list of tags or
-  # other main groupings to use for filenames.
-  #
+.generate_paths <- function(paths, api_abbr, security_data, base_url) {
   # TODO: Do any APIDs lack tags?
+  # TODO: Do any APIDs have multiple tags?
   paths_by_tag <- as_bk_data(paths)
   paths_file_paths <- character()
   if (length(paths_by_tag)) {
@@ -14,6 +12,12 @@ NULL
       api_abbr,
       security_data
     )
+    setup_file <- .bk_use_template(
+      template = "setup.R",
+      data = list(base_url = base_url),
+      dir = "tests/testthat"
+    )
+    paths_file_paths <- c(paths_file_paths, setup_file)
   }
   return(paths_file_paths)
 }
@@ -25,7 +29,13 @@ NULL
       .generate_paths_file(path_tag, path_tag_name, api_abbr, security_data)
     }
   )
-  return(unname(paths_file_paths))
+  paths_test_paths <- purrr::imap_chr(
+    paths_by_tag,
+    function(path_tag, path_tag_name) {
+      .generate_paths_test_file(path_tag, path_tag_name, api_abbr)
+    }
+  )
+  return(c(unname(paths_file_paths), unname(paths_test_paths)))
 }
 
 .generate_paths_file <- function(path_tag,
@@ -40,6 +50,19 @@ NULL
       security_data = security_data
     ),
     target = glue("paths-{path_tag_name}.R")
+  )
+}
+
+.generate_paths_test_file <- function(path_tag, path_tag_name, api_abbr) {
+  .bk_use_template(
+    template = "test-paths.R",
+    data = list(
+      paths = path_tag,
+      tag = path_tag_name,
+      api_abbr = api_abbr
+    ),
+    dir = "tests/testthat",
+    target = glue("test-paths-{path_tag_name}.R")
   )
 }
 
@@ -99,6 +122,7 @@ S7::method(as_bk_data, class_paths) <- function(x) {
     params = params
   )
   endpoint_list$args <- .collapse_comma(params_df$name)
+  endpoint_list$test_args <- endpoint_list$args
   return(endpoint_list)
 }
 
