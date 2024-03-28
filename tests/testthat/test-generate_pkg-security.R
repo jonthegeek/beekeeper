@@ -1,5 +1,10 @@
 test_that("generate_pkg() generates call function with API keys", {
   skip_on_cran()
+  local_mocked_bindings(
+    .generate_paths = function(...) {
+      character()
+    }
+  )
   config <- readLines(test_path("_fixtures", "trello_beekeeper.yml"))
   trello_rapid <- readRDS(test_path("_fixtures", "trello_rapid.rds"))
   call_expected <- readLines(test_path("_fixtures", "trello-010-call.R"))

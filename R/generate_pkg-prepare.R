@@ -8,7 +8,7 @@
   if (.is_pkg(base_path)) {
     return(invisible(NULL))
   }
-  cli::cli_abort(c(
+  cli_abort(c(
     "Can't generate package files outside of a package.",
     x = "{.path {base_path}} is not inside a package."
   ))
@@ -22,16 +22,16 @@
 #'
 #' @return `TRUE` if the project is a package, `FALSE` if not.
 #' @keywords internal
-.is_pkg <- function(base_path = usethis::proj_get()) {
-  root_file <- rlang::try_fetch(
-    rprojroot::find_package_root_file(path = base_path),
+.is_pkg <- function(base_path = proj_get()) {
+  root_file <- try_fetch(
+    find_package_root_file(path = base_path),
     error = function(cnd) NULL
   )
   !is.null(root_file)
 }
 
 .read_config <- function(config_file = "_beekeeper.yml") {
-  config <- yaml::read_yaml(config_file)
+  config <- read_yaml(config_file)
   config <- .stabilize_config(config)
   return(config)
 }
