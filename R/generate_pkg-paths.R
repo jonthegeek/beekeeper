@@ -78,7 +78,7 @@ S7::method(as_bk_data, class_paths) <- function(x) {
   nest(
     filter(
       unnest(x, "operations"),
-      !deprecated
+      !.data$deprecated
     ),
     .by = "tags", .key = "endpoints"
   )

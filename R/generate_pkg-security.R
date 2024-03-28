@@ -62,8 +62,8 @@ S7::method(as_bk_data, class_security_schemes) <- function(x) {
   if (is.na(description)) {
     return(
       switch(type,
-             api_key = .security_scheme_description_api_key,
-             NA_character_
+        api_key = .security_scheme_description_api_key,
+        NA_character_
       )
     )
   }
@@ -139,7 +139,10 @@ S7::method(as_bk_data, class_api_key_security_scheme) <- function(x) {
   return(list())
 }
 
-# S7::method(as_bk_data, rapid::class_oauth2_authorization_code_flow) <- function(x) {
+# S7::method(
+#   as_bk_data,
+#   rapid::class_oauth2_authorization_code_flow
+# ) <- function(x) {
 #   if (!length(x)) {
 #     return(list())
 #   }
