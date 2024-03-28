@@ -1,6 +1,3 @@
-#' @include as_bk_data.R
-NULL
-
 .generate_paths <- function(paths, api_abbr, security_data, base_url) {
   # TODO: Do any APIDs lack tags?
   # TODO: Do any APIDs have multiple tags?

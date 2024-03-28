@@ -52,17 +52,3 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
-Collate: 
-    'as_bk_data.R'
-    'beekeeper-package.R'
-    'generate_pkg-agent.R'
-    'generate_pkg-call.R'
-    'generate_pkg-paths.R'
-    'generate_pkg-prepare.R'
-    'generate_pkg-security.R'
-    'generate_pkg-template.R'
-    'generate_pkg_main.R'
-    'todo.R'
-    'use_beekeeper.R'
-    'utils.R'
-    'zzz.R'

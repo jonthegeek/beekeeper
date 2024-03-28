@@ -1,6 +1,3 @@
-#' @include as_bk_data.R
-NULL
-
 .generate_security <- function(api_abbr, security_schemes) {
   security_data <- as_bk_data(security_schemes)
   if (length(security_data)) {
