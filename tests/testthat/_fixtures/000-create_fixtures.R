@@ -14,8 +14,18 @@ apid_url <- "https://api.apis.guru/v2/specs/fec.gov/1.0/openapi.yaml"
 api_abbr <- "fec"
 rapid_write_path <- test_path(glue::glue("_fixtures/{api_abbr}_rapid.rds"))
 config_path <- test_path(glue::glue("_fixtures/{api_abbr}_beekeeper.yml"))
-apid_url |>
+fec_apid <- apid_url |>
   url() |>
+  yaml::read_yaml()
+fec_apid$security <- list(
+  list(ApiKeyHeaderAuth = list(), ApiKeyQueryAuth = list())
+)
+fec_apid$components$securitySchemes <- list(
+  ApiKeyHeaderAuth = list(`in` = "header", name = "X-Api-Key", type = "apiKey"),
+  ApiKeyQueryAuth = list(`in` = "query", name = "api_key", type = "apiKey")
+)
+cli::cli_warn("FEC APID manually cleaned to remove duplicate security scheme.")
+fec_apid |>
   use_beekeeper(
     api_abbr = api_abbr,
     config_file = config_path,
@@ -34,4 +44,4 @@ apid_url |>
     rapid_file = rapid_write_path
   )
 
-warning("Revert .Rbuildignore")
+cli::cli_warn("Revert .Rbuildignore")
