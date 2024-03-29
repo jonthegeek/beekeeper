@@ -25,7 +25,23 @@ fec_apid$components$securitySchemes <- list(
   ApiKeyQueryAuth = list(`in` = "query", name = "api_key", type = "apiKey")
 )
 cli::cli_warn("FEC APID manually cleaned to remove duplicate security scheme.")
-fec_apid |>
+fec_rapid <- rapid::as_rapid(fec_apid)
+fec_rapid |>
+  use_beekeeper(
+    api_abbr = api_abbr,
+    config_file = config_path,
+    rapid_file = rapid_write_path
+  )
+fec_rapid@paths <- rapid::as_paths({
+  fec_rapid@paths |>
+    tibble::as_tibble() |>
+    tidyr::hoist(operations, tags = "tags", .remove = FALSE) |>
+    dplyr::filter(tags %in% c("audit", "debts", "legal")) |>
+    dplyr::select(-tags)
+})
+rapid_write_path <- test_path(glue::glue("_fixtures/{api_abbr}_subset_rapid.rds"))
+config_path <- test_path(glue::glue("_fixtures/{api_abbr}_subset_beekeeper.yml"))
+fec_rapid |>
   use_beekeeper(
     api_abbr = api_abbr,
     config_file = config_path,
