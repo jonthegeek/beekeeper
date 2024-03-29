@@ -11,8 +11,7 @@
 trello_call_api <- function(path,
                             query = NULL,
                             body = NULL,
-                            method = NULL,
-                            key = Sys.getenv("TRELLO_KEY"),
+                            method = NULL, key = Sys.getenv("TRELLO_KEY"),
                             token = Sys.getenv("TRELLO_TOKEN")) {
   nectar::call_api(
     base_url = "https://trello.com/1",

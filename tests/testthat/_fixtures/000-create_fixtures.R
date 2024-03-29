@@ -52,8 +52,18 @@ apid_url <- "https://api.apis.guru/v2/specs/trello.com/1.0/openapi.yaml"
 api_abbr <- "trello"
 rapid_write_path <- test_path(glue::glue("_fixtures/{api_abbr}_rapid.rds"))
 config_path <- test_path(glue::glue("_fixtures/{api_abbr}_beekeeper.yml"))
-apid_url |>
+trello_rapid <- apid_url |>
   url() |>
+  rapid::as_rapid()
+trello_rapid@paths <- rapid::as_paths({
+  trello_rapid@paths |>
+    tibble::as_tibble() |>
+    tidyr::unnest(operations) |>
+    dplyr::filter(tags == "board") |>
+    head(1) |>
+    tidyr::nest(.by = "endpoint", .key = "operations")
+})
+trello_rapid |>
   use_beekeeper(
     api_abbr = api_abbr,
     config_file = config_path,

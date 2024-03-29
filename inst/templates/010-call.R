@@ -10,7 +10,7 @@
 {{api_abbr}}_call_api <- function(path,
                                   query = NULL,
                                   body = NULL,
-                                  method = NULL{{{security_signature}}}) {
+                                  method = NULL{{#has_security}},{{{security_signature}}}{{/has_security}}) {
   nectar::call_api(
     base_url = "{{base_url}}",
     path = path,
