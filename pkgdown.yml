@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   beekeeper: beekeeper.html
-last_built: 2024-03-29T15:22Z
+last_built: 2024-03-29T20:02Z
 urls:
   reference: https://beekeeper.api2r.org/reference
   article: https://beekeeper.api2r.org/articles
