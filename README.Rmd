@@ -48,10 +48,10 @@ Most of the outline was included in the grant proposal.
     - [x] Add support for APIs using the OAS json format.
     - [x] Streamline discovery of API definitions (with associated error handling).
         -   **UPDATE:** This functionality is in a separate package, [{anyapi}](https://anyapi.api2r.org).
-- [ ] **0.3.0: Endpoint function scaffolding.**
-    - [ ] Generate R/*.R and tests/testthat/*.R files for all endpoints ("paths") described in the given API specification. 
-    - [ ] The generated functions will work, but error checking, documentation, and tests will be minimal.
-    - [ ] **Potential challenges:** I'll need to strike a balance here between getting a basic working system and producing something that can be easily expanded later.
+- [x] **0.3.0: Endpoint function scaffolding.**
+    - [x] Generate R/*.R and tests/testthat/*.R files for all endpoints ("paths") described in the given API specification. 
+    - [x] The generated functions will work, but error checking, documentation, and tests will be minimal.
+    - [x] **Potential challenges:** I'll need to strike a balance here between getting a basic working system and producing something that can be easily expanded later.
         -   **Update:** Also, this likely could go unsaid, but, if the API description is incorrect, the functions will not work as expected. Hopefully their error messages will be helpful for debugging, though!
 - [ ] **0.4.0: Batching and rate limiting.**
     - [ ] Add documentation for implementing batching and rate-limiting. 
