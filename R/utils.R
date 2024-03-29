@@ -6,6 +6,14 @@
   }
 }
 
+`%|"|%` <- function(x, y) {
+  if (!nzchar(x)) {
+    y
+  } else {
+    x
+  }
+}
+
 .collapse_comma <- function(x) {
   glue_collapse(x, sep = ", ")
 }

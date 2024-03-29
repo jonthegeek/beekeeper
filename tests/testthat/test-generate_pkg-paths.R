@@ -54,3 +54,23 @@ test_that("generate_pkg() generates test setup file for guru", {
   generated_file_content <- readLines("tests/testthat/setup.R")
   expect_identical(generated_file_content, expected_file_content)
 })
+
+test_that("generate_pkg() generates path functions for fec", {
+  # 19 tags, more complicated security
+  skip_on_cran()
+  config <- readLines(test_path("_fixtures", "fec_subset_beekeeper.yml"))
+  fec_rapid <- readRDS(test_path("_fixtures", "fec_subset_rapid.rds"))
+  expected_file_content <- readLines(
+    test_path("_fixtures", "fec-paths-audit.R")
+  )
+
+  create_local_package()
+  writeLines(config, "_beekeeper.yml")
+  saveRDS(fec_rapid, "fec_subset_rapid.rds")
+
+  changed_files <- generate_pkg(pkg_agent = "TESTPKG (https://example.com)")
+  expect_snapshot(scrub_path(changed_files))
+
+  generated_file_content <- readLines("R/paths-audit.R")
+  expect_identical(generated_file_content, expected_file_content)
+})
