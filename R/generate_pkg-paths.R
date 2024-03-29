@@ -64,7 +64,7 @@ S7::method(as_bk_data, class_paths) <- function(x) {
         endpoints$endpoint,
         endpoints$operation
       ),
-      description = str_squish(endpoints$description),
+      description = .paths_fill_descriptions(endpoints$description),
       params_df = endpoints$parameters
     ),
     .paths_endpoint_to_list
@@ -205,11 +205,15 @@ S7::method(as_bk_data, class_paths) <- function(x) {
       path$params_cookie <- .prep_param_args(path$params_cookie, security_args)
       path$params_header <- .prep_param_args(path$params_header, security_args)
       path$params_query <- .prep_param_args(path$params_query, security_args)
-      path$args <- .collapse_comma(map_chr(path$params, "name"))
+      path$args <- .params_to_args(path$params)
       path$test_args <- path$args
       return(path)
     }
   )
+}
+
+.params_to_args <- function(params) {
+  .collapse_comma(map_chr(params, "name")) %|"|% character()
 }
 
 .remove_security_args <- function(params, security_args) {

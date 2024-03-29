@@ -29,9 +29,7 @@
 #' @param sort Provide a field to sort by. Use `-` for descending order. ex: `-case_no`
 #' @return BKTODO: Return descriptions are not yet implemented in beekeeper
 #' @export
-fec_get_audit_case <- function(
-    audit_case_id, cycle, sub_category_id, sort_nulls_last, sort_hide_null, min_election_cycle, audit_id, q, per_page, max_election_cycle, candidate_id, committee_type, qq, page, committee_id, committee_designation, primary_category_id, sort_null_only, sort,
-    api_key = Sys.getenv("FEC_API_KEY")) {
+fec_get_audit_case <- function(audit_case_id, cycle, sub_category_id, sort_nulls_last, sort_hide_null, min_election_cycle, audit_id, q, per_page, max_election_cycle, candidate_id, committee_type, qq, page, committee_id, committee_designation, primary_category_id, sort_null_only, sort, api_key = Sys.getenv("FEC_API_KEY")) {
   fec_call_api(
     path = "/audit-case/",
     api_key = api_key,
@@ -54,9 +52,7 @@ fec_get_audit_case <- function(
 #' @param sort Provide a field to sort by. Use `-` for descending order.
 #' @return BKTODO: Return descriptions are not yet implemented in beekeeper
 #' @export
-fec_get_audit_category <- function(
-    sort_nulls_last, page, primary_category_name, sort_hide_null, primary_category_id, sort_null_only, per_page, sort,
-    api_key = Sys.getenv("FEC_API_KEY")) {
+fec_get_audit_category <- function(sort_nulls_last, page, primary_category_name, sort_hide_null, primary_category_id, sort_null_only, per_page, sort, api_key = Sys.getenv("FEC_API_KEY")) {
   fec_call_api(
     path = "/audit-category/",
     api_key = api_key,
@@ -79,9 +75,7 @@ fec_get_audit_category <- function(
 #' @param sort Provide a field to sort by. Use `-` for descending order.
 #' @return BKTODO: Return descriptions are not yet implemented in beekeeper
 #' @export
-fec_get_audit_primary_category <- function(
-    sort_nulls_last, page, primary_category_name, sort_hide_null, primary_category_id, sort_null_only, per_page, sort,
-    api_key = Sys.getenv("FEC_API_KEY")) {
+fec_get_audit_primary_category <- function(sort_nulls_last, page, primary_category_name, sort_hide_null, primary_category_id, sort_null_only, per_page, sort, api_key = Sys.getenv("FEC_API_KEY")) {
   fec_call_api(
     path = "/audit-primary-category/",
     api_key = api_key,
@@ -97,9 +91,7 @@ fec_get_audit_primary_category <- function(
 #' @param q Name (candidate or committee) to search for
 #' @return BKTODO: Return descriptions are not yet implemented in beekeeper
 #' @export
-fec_get_names_audit_candidates <- function(
-    q,
-    api_key = Sys.getenv("FEC_API_KEY")) {
+fec_get_names_audit_candidates <- function(q, api_key = Sys.getenv("FEC_API_KEY")) {
   fec_call_api(
     path = "/names/audit_candidates/",
     api_key = api_key,
@@ -115,9 +107,7 @@ fec_get_names_audit_candidates <- function(
 #' @param q Name (candidate or committee) to search for
 #' @return BKTODO: Return descriptions are not yet implemented in beekeeper
 #' @export
-fec_get_names_audit_committees <- function(
-    q,
-    api_key = Sys.getenv("FEC_API_KEY")) {
+fec_get_names_audit_committees <- function(q, api_key = Sys.getenv("FEC_API_KEY")) {
   fec_call_api(
     path = "/names/audit_committees/",
     api_key = api_key,
