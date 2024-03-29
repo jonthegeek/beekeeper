@@ -51,3 +51,13 @@ scrub_config <- function(input) {
 scrub_tempdir <- function(input) {
   sub("^.*Rtmp\\S+", "TMPDIR", input)
 }
+
+scrub_path <- function(input, keep_dirs = c("R", "tests")) {
+  dirs_string <- paste0(keep_dirs, collapse = "|")
+  search <- glue("^.*(/({dirs_string})/)")
+  stringr::str_replace(
+    input,
+    search,
+    "\\1"
+  )
+}
