@@ -65,7 +65,8 @@ S7::method(as_bk_data, class_paths) <- function(x) {
         endpoints$operation
       ),
       description = .paths_fill_descriptions(endpoints$description),
-      params_df = endpoints$parameters
+      params_df = endpoints$parameters,
+      method = endpoints$operation
     ),
     .paths_endpoint_to_list
   )
@@ -91,12 +92,14 @@ S7::method(as_bk_data, class_paths) <- function(x) {
                                     path,
                                     summary,
                                     description,
-                                    params_df) {
+                                    params_df,
+                                    method) {
   params_df <- .prepare_paths_df(params_df)
   return(
     list(
       operation_id = operation_id,
       path = .path_as_arg(path, params_df),
+      method = method,
       summary = summary,
       description = description,
       params = .params_to_list(params_df),

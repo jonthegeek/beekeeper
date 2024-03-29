@@ -15,6 +15,7 @@ trello_add_boards <- function(
     token = Sys.getenv("TRELLO_TOKEN")) {
   trello_call_api(
     path = "/boards",
+    method = "post",
     key = key, token = token
   )
 }

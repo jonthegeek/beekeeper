@@ -14,7 +14,8 @@
 #' @export
 {{api_abbr}}_{{operation_id}} <- function({{{args}}}{{#has_security}}{{#args}},{{/args}}{{{security_signature}}}{{/has_security}}) {
   {{api_abbr}}_call_api(
-    path = {{{path}}}{{#has_security}},
+    path = {{{path}}},
+    method = "{{method}}"{{#has_security}},
     {{security_arg_list}}{{/has_security}}{{#params_query}},
     query = list({{params_query}}){{/params_query}}{{#params_header}},
     body = list({{params_header}}){{/params_header}}
