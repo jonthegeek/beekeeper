@@ -59,12 +59,12 @@ included in the grant proposal.
     handling).
     - **UPDATE:** This functionality is in a separate package,
       [{anyapi}](https://anyapi.api2r.org).
-- [ ] **0.3.0: Endpoint function scaffolding.**
-  - [ ] Generate R/*.R and tests/testthat/*.R files for all endpoints
+- [x] **0.3.0: Endpoint function scaffolding.**
+  - [x] Generate R/*.R and tests/testthat/*.R files for all endpoints
     (“paths”) described in the given API specification.
-  - [ ] The generated functions will work, but error checking,
+  - [x] The generated functions will work, but error checking,
     documentation, and tests will be minimal.
-  - [ ] **Potential challenges:** I’ll need to strike a balance here
+  - [x] **Potential challenges:** I’ll need to strike a balance here
     between getting a basic working system and producing something that
     can be easily expanded later.
     - **Update:** Also, this likely could go unsaid, but, if the API
