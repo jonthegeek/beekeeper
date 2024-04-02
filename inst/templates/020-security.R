@@ -6,10 +6,12 @@
 # pass the same parameter in a header, possibly with a different name. Consult
 # the text description of authentication in your API documentation.
 
-{{api_abbr}}_security <- function(req, {{security_arg_names}}) {
-  {{#api_schemes}}
-  req <- {{api_abbr}}_security_{{name}}(req, {{arg_name}})
-  {{/api_schemes}}
+{{api_abbr}}_security <- function(req, {{security_arg_nulls}}) {
+{{#security_schemes}}
+  if (!is.null({{arg_name}})) {
+    req <- {{api_abbr}}_security_{{name}}(req, {{arg_name}})
+  }
+{{/security_schemes}}
   return(req)
 }
 
