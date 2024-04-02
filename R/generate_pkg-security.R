@@ -94,6 +94,9 @@ S7::method(as_bk_data, class_security_schemes) <- function(x) {
     security_arg_helps = .generate_security_arg_help(
       security_schemes,
       security_args
+    ),
+    security_arg_nulls = .collapse_comma(
+      glue("{security_args} = NULL")
     )
   ))
 }
