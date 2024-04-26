@@ -86,12 +86,12 @@ included in the grant proposal.
       help with this quite a lot, thankfully! I’m skipping this
       milestone while that functionality stabilizes (this was previously
       0.3.0).
-- **0.5.0: More robust scaffolding.**
-  - Add parameter documentation.
-  - Also add parameter type checking.
-  - **Potential challenges:** By this point I’ll need an OAS definition
-    document to use for testing that includes all of the possible
-    parameter types. I’ll likely need to generate a fake API
+- [ ] **0.5.0: More robust scaffolding.**
+  - [ ] Add parameter documentation.
+  - [ ] Also add parameter type checking.
+  - [ ] **Potential challenges:** By this point I’ll need an OAS
+    definition document to use for testing that includes all of the
+    possible parameter types. I’ll likely need to generate a fake API
     specification that goes beyond a typical individual example.
 - **0.6.0: Expected results.**
   - Add response (return value) documentation.

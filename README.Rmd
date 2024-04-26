@@ -58,10 +58,10 @@ Most of the outline was included in the grant proposal.
     - [x] If possible, export functionality to help implement these processes, but standards seem to vary widely.
     - [x] **Potential challenges:** This step will involve more reading and documenting than code, to gather examples of how different APIs implement limits and batching. It's possible systems will be so different that it will be difficult to summarize them. For example, Slack has two separate batching systems in its API, with some functions moved to the newer system, and others not. 
         -   **UPDATE:** The [development version of {httr2}](https://github.com/r-lib/httr2/) has functionality to help with this quite a lot, thankfully! I'm skipping this milestone while that functionality stabilizes (this was previously 0.3.0).
--   **0.5.0: More robust scaffolding.**
-    -   Add parameter documentation.
-    -   Also add parameter type checking.
-    -   **Potential challenges:** By this point I'll need an OAS definition document to use for testing that includes all of the possible parameter types. I'll likely need to generate a fake API specification that goes beyond a typical individual example.
+- [ ] **0.5.0: More robust scaffolding.**
+    - [ ] Add parameter documentation.
+    - [ ] Also add parameter type checking.
+    - [ ] **Potential challenges:** By this point I'll need an OAS definition document to use for testing that includes all of the possible parameter types. I'll likely need to generate a fake API specification that goes beyond a typical individual example.
 -   **0.6.0: Expected results.**
     -   Add response (return value) documentation.
     -   Use expected responses to generate better test scaffolds.
