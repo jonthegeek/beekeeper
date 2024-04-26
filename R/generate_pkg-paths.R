@@ -30,11 +30,10 @@ S7::method(as_bk_data, class_paths) <- function(x) {
 }
 
 .paths_to_tags_df <- function(x) {
+  x <- unnest(x, "operations")
+  x <- x[!x$deprecated, ]
   nest(
-    filter(
-      unnest(x, "operations"),
-      !.data$deprecated
-    ),
+    x,
     .by = "tags", .key = "endpoints"
   )
 }
@@ -75,12 +74,12 @@ S7::method(as_bk_data, class_paths) <- function(x) {
 ### fill data ------------------------------------------------------------------
 
 .paths_fill_operation_id <- function(operation_id, endpoint, method) {
-  coalesce(.to_snake(operation_id), glue("{method}_{.to_snake(endpoint)}"))
+  .coalesce(.to_snake(operation_id), glue("{method}_{.to_snake(endpoint)}"))
 }
 
 .paths_fill_summary <- function(summary, endpoint, method) {
   endpoint_spaced <- str_replace_all(.to_snake(endpoint), "_", " ")
-  coalesce(
+  .coalesce(
     str_squish(summary),
     str_to_sentence(glue("{method} {endpoint_spaced}"))
   )
@@ -113,7 +112,7 @@ S7::method(as_bk_data, class_paths) <- function(x) {
 .prepare_paths_df <- function(params_df) {
   params_df <- .flatten_df(params_df)
   if (nrow(params_df)) {
-    params_df <- filter(params_df, !.data$deprecated)
+    params_df <- params_df[!params_df$deprecated, ]
     params_df$description <- .paths_fill_descriptions(params_df$description)
   }
   return(params_df)

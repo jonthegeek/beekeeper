@@ -18,11 +18,9 @@ Depends:
 Imports: 
     cli,
     desc,
-    dplyr,
     fs,
     glue,
     httptest2,
-    lubridate,
     nectar,
     purrr,
     rapid (>= 0.0.0.9003),

@@ -33,11 +33,12 @@ fec_rapid |>
     rapid_file = rapid_write_path
   )
 fec_rapid@paths <- rapid::as_paths({
-  fec_rapid@paths |>
+  x <- fec_rapid@paths |>
     tibble::as_tibble() |>
-    tidyr::hoist(operations, tags = "tags", .remove = FALSE) |>
-    dplyr::filter(tags %in% c("audit", "debts", "legal")) |>
-    dplyr::select(-tags)
+    tidyr::hoist(operations, tags = "tags", .remove = FALSE)
+  x <- x[x$tags %in% c("audit", "debts", "legal"), ]
+  x$tags <- NULL
+  x
 })
 rapid_write_path <- test_path(glue::glue("_fixtures/{api_abbr}_subset_rapid.rds"))
 config_path <- test_path(glue::glue("_fixtures/{api_abbr}_subset_beekeeper.yml"))
@@ -56,10 +57,10 @@ trello_rapid <- apid_url |>
   url() |>
   rapid::as_rapid()
 trello_rapid@paths <- rapid::as_paths({
-  trello_rapid@paths |>
+  x <- trello_rapid@paths |>
     tibble::as_tibble() |>
-    tidyr::unnest(operations) |>
-    dplyr::filter(tags == "board") |>
+    tidyr::unnest(operations)
+  x[x$tags == "board", ] |>
     head(1) |>
     tidyr::nest(.by = "endpoint", .key = "operations")
 })

@@ -41,9 +41,10 @@
   config$api_abbr <- stabilize_string(config$api_abbr)
   config$api_version <- stabilize_string(config$api_version)
   config$rapid_file <- stabilize_string(config$rapid_file)
-  config$updated_on <- parse_date_time(
+  config$updated_on <- strptime(
     config$updated_on,
-    orders = c("ymd HMS", "ymd H", "ymd")
+    format = "%Y-%m-%d %H:%M:%S",
+    tz = "UTC"
   )
   return(config)
 }
