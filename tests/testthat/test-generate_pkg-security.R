@@ -28,7 +28,7 @@ test_that("generate_pkg() generates security functions", {
   )
   config <- readLines(test_path("_fixtures", "trello_beekeeper.yml"))
   trello_rapid <- readRDS(test_path("_fixtures", "trello_rapid.rds"))
-  security_expected <- readLines(test_path("_fixtures", "trello-020-security.R"))
+  security_expected <- readLines(test_path("_fixtures", "trello-020-auth.R"))
 
   create_local_package()
   writeLines(config, "_beekeeper.yml")
@@ -36,6 +36,6 @@ test_that("generate_pkg() generates security functions", {
 
   generate_pkg(pkg_agent = "TESTPKG (https://example.com)")
 
-  security_result <- scrub_testpkg(readLines("R/020-security.R"))
+  security_result <- scrub_testpkg(readLines("R/020-auth.R"))
   expect_identical(security_result, security_expected)
 })
