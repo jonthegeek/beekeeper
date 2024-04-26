@@ -2,7 +2,7 @@
   security_data <- as_bk_data(security_schemes)
   if (length(security_data)) {
     security_data$security_file_path <- .bk_use_template(
-      template = "020-security.R",
+      template = "020-auth.R",
       data = c(security_data, api_abbr = api_abbr)
     )
     security_data$security_signature <- .generate_security_signature(

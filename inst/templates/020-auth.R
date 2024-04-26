@@ -6,10 +6,10 @@
 # pass the same parameter in a header, possibly with a different name. Consult
 # the text description of authentication in your API documentation.
 
-{{api_abbr}}_security <- function(req, {{security_arg_nulls}}) {
+.{{api_abbr}}_req_auth <- function(req, {{security_arg_nulls}}) {
 {{#security_schemes}}
   if (!is.null({{arg_name}})) {
-    req <- {{api_abbr}}_security_{{name}}(req, {{arg_name}})
+    req <- .{{api_abbr}}_req_auth_{{name}}(req, {{arg_name}})
   }
 {{/security_schemes}}
   return(req)
@@ -19,8 +19,8 @@
 {{#description}}
 # {{description}}
 {{/description}}
-{{api_abbr}}_security_{{name}} <- function(req, {{#api_key}}{{arg_name}}) {
-  nectar::security_api_key(
+.{{api_abbr}}_req_auth_{{name}} <- function(req, {{#api_key}}{{arg_name}}) {
+  nectar::req_auth_api_key(
     req,
     location = "{{location}}",
     parameter_name = "{{parameter_name}}",

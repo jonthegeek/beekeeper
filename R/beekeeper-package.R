@@ -19,7 +19,6 @@
 #' @importFrom httptest2 use_httptest2
 #' @importFrom lubridate now
 #' @importFrom lubridate parse_date_time
-#' @importFrom nectar call_api
 #' @importFrom nectar stabilize_string
 #' @importFrom purrr discard
 #' @importFrom purrr imap

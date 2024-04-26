@@ -6,19 +6,19 @@
 # pass the same parameter in a header, possibly with a different name. Consult
 # the text description of authentication in your API documentation.
 
-trello_security <- function(req, key = NULL, token = NULL) {
+.trello_req_auth <- function(req, key = NULL, token = NULL) {
   if (!is.null(key)) {
-    req <- trello_security_api_key(req, key)
+    req <- .trello_req_auth_api_key(req, key)
   }
   if (!is.null(token)) {
-    req <- trello_security_api_token(req, token)
+    req <- .trello_req_auth_api_token(req, token)
   }
   return(req)
 }
 
 # An API key provided by the API provider. This key is not clearly documented in the API description. Check the API documentation for details.
-trello_security_api_key <- function(req, key) {
-  nectar::security_api_key(
+.trello_req_auth_api_key <- function(req, key) {
+  nectar::req_auth_api_key(
     req,
     location = "query",
     parameter_name = "key",
@@ -27,8 +27,8 @@ trello_security_api_key <- function(req, key) {
 }
 
 # An API key provided by the API provider. This key is not clearly documented in the API description. Check the API documentation for details.
-trello_security_api_token <- function(req, token) {
-  nectar::security_api_key(
+.trello_req_auth_api_token <- function(req, token) {
+  nectar::req_auth_api_key(
     req,
     location = "query",
     parameter_name = "token",

@@ -6,7 +6,7 @@
 #'
 #' @param config_file The path to a beekeeper yaml file.
 #' @param pkg_agent A string to identify this package, for use in the
-#'   `user_agent` argument of [nectar::call_api()].
+#'   `user_agent` argument of [nectar::req_setup()].
 #'
 #' @return A character vector of paths to files that were added or updated,
 #'   invisibly.
