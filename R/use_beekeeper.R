@@ -40,13 +40,14 @@ use_beekeeper <- function(x,
 
 .write_config <- function(x, api_abbr, rapid_file, config_file) {
   config_file <- stabilize_string(config_file)
+  update_time <- strptime(Sys.time(), format = "%Y-%m-%d %H:%M:%S", tz = "UTC")
   write_yaml(
     list(
       api_title = x@info@title,
       api_abbr = stabilize_string(api_abbr),
       api_version = x@info@version,
       rapid_file = path_rel(rapid_file, path_dir(config_file)),
-      updated_on = as.character(now(tzone = "UTC"))
+      updated_on = as.character(update_time)
     ),
     file = config_file
   )
