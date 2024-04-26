@@ -18,7 +18,6 @@ Depends:
 Imports: 
     cli,
     desc,
-    dplyr,
     fs,
     glue,
     httptest2,

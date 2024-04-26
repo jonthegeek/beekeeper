@@ -14,6 +14,10 @@
   }
 }
 
+.coalesce <- function(x, y) {
+  ifelse(is.na(x), y, x)
+}
+
 .collapse_comma <- function(x) {
   glue_collapse(x, sep = ", ")
 }
