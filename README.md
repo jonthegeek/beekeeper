@@ -34,49 +34,49 @@ package, working toward a stable version 1.0.0. Most of the outline was
 included in the grant proposal.
 
 - [x] **pre-0.1.0: Infrastructure.**
-  - [x] I split the OpenAPI-parsing functionality into a separate
-    package, [{rapid}](https://rapid.api2r.org). That package is being
-    developed parallel to this one, and contains all of the *R API
+  - I split the OpenAPI-parsing functionality into a separate package,
+    [{rapid}](https://rapid.api2r.org). That package is being developed
+    parallel to this one, and contains all of the *R API
     D*efinition-specific functionality.
-  - [x] I also realized I need a package for wrapping {httr2} calls.
-    That package is called [{nectar}](https://nectar.api2r.org), and is
-    also being developed parallel to this one.
+  - I also realized I need a package for wrapping {httr2} calls. That
+    package is called [{nectar}](https://nectar.api2r.org), and is also
+    being developed parallel to this one.
 - [x] **0.1.0: Basic authentication and endpoint calls.**
-  - [x] Export a function or functions to generate `R/*.R` files to call
-    an API, given the URL of an OpenAPI spec in YAML format (or a
+  - Export a function or functions to generate `R/*.R` files to call an
+    API, given the URL of an OpenAPI spec in YAML format (or a
     `rapid::class_rapid()` object). The generated files will follow and
     encourage best practices, and will serve as the core around which
     the rest of a package would be built.
-  - [x] Also generate a `tests/testthat/*.R` file for that generated
+  - Also generate a `tests/testthat/*.R` file for that generated
     function.
-  - [x] Generate `R/*.R` and `tests/testthat/*.R` files to authenticate
-    the user (using API keys).
-  - [x] Produce a vignette about configuring authentication. Folded into
-    the main vignette since it’s suprisingly straightforward.
+  - Generate `R/*.R` and `tests/testthat/*.R` files to authenticate the
+    user (using API keys).
+  - Produce a vignette about configuring authentication. Folded into the
+    main vignette since it’s suprisingly straightforward.
 - [x] **0.2.0: OAS definition discovery.**
-  - [x] Add support for APIs using the OAS json format.
-  - [x] Streamline discovery of API definitions (with associated error
+  - Add support for APIs using the OAS json format.
+  - Streamline discovery of API definitions (with associated error
     handling).
     - **UPDATE:** This functionality is in a separate package,
       [{anyapi}](https://anyapi.api2r.org).
 - [x] **0.3.0: Endpoint function scaffolding.**
-  - [x] Generate R/*.R and tests/testthat/*.R files for all endpoints
+  - Generate R/*.R and tests/testthat/*.R files for all endpoints
     (“paths”) described in the given API specification.
-  - [x] The generated functions will work, but error checking,
+  - The generated functions will work, but error checking,
     documentation, and tests will be minimal.
-  - [x] **Potential challenges:** I’ll need to strike a balance here
-    between getting a basic working system and producing something that
-    can be easily expanded later.
+  - **Potential challenges:** I’ll need to strike a balance here between
+    getting a basic working system and producing something that can be
+    easily expanded later.
     - **Update:** Also, this likely could go unsaid, but, if the API
       description is incorrect, the functions will not work as expected.
       Hopefully their error messages will be helpful for debugging,
       though!
 - [x] **0.4.0: Batching and rate limiting.**
-  - [x] Add documentation for implementing batching and rate-limiting.
-  - [x] If possible, export functionality to help implement these
-    processes, but standards seem to vary widely.
-  - [x] **Potential challenges:** This step will involve more reading
-    and documenting than code, to gather examples of how different APIs
+  - Add documentation for implementing batching and rate-limiting.
+  - If possible, export functionality to help implement these processes,
+    but standards seem to vary widely.
+  - **Potential challenges:** This step will involve more reading and
+    documenting than code, to gather examples of how different APIs
     implement limits and batching. It’s possible systems will be so
     different that it will be difficult to summarize them. For example,
     Slack has two separate batching systems in its API, with some
