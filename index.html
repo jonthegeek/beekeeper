@@ -91,26 +91,25 @@
 <ul>
 <li>
 <label><input type="checkbox" checked><strong>pre-0.1.0: Infrastructure.</strong></label>
-<ul class="task-list">
-<li><label><input type="checkbox" checked>I split the OpenAPI-parsing functionality into a separate package, <a href="https://rapid.api2r.org" class="external-link">{rapid}</a>. That package is being developed parallel to this one, and contains all of the <em>R API D</em>efinition-specific functionality.</label></li>
-<li><label><input type="checkbox" checked>I also realized I need a package for wrapping {httr2} calls. That package is called <a href="https://nectar.api2r.org" class="external-link">{nectar}</a>, and is also being developed parallel to this one.</label></li>
+<ul>
+<li>I split the OpenAPI-parsing functionality into a separate package, <a href="https://rapid.api2r.org" class="external-link">{rapid}</a>. That package is being developed parallel to this one, and contains all of the <em>R API D</em>efinition-specific functionality.</li>
+<li>I also realized I need a package for wrapping {httr2} calls. That package is called <a href="https://nectar.api2r.org" class="external-link">{nectar}</a>, and is also being developed parallel to this one.</li>
 </ul>
 </li>
 <li>
 <label><input type="checkbox" checked><strong>0.1.0: Basic authentication and endpoint calls.</strong></label>
-<ul class="task-list">
-<li><label><input type="checkbox" checked>Export a function or functions to generate <code>R/*.R</code> files to call an API, given the URL of an OpenAPI spec in YAML format (or a <code><a href="https://jonthegeek.github.io/rapid/reference/class_rapid.html" class="external-link">rapid::class_rapid()</a></code> object). The generated files will follow and encourage best practices, and will serve as the core around which the rest of a package would be built.</label></li>
-<li><label><input type="checkbox" checked>Also generate a <code>tests/testthat/*.R</code> file for that generated function.</label></li>
-<li><label><input type="checkbox" checked>Generate <code>R/*.R</code> and <code>tests/testthat/*.R</code> files to authenticate the user (using API keys).</label></li>
-<li><label><input type="checkbox" checked>Produce a vignette about configuring authentication. Folded into the main vignette since it’s suprisingly straightforward.</label></li>
+<ul>
+<li>Export a function or functions to generate <code>R/*.R</code> files to call an API, given the URL of an OpenAPI spec in YAML format (or a <code><a href="https://jonthegeek.github.io/rapid/reference/class_rapid.html" class="external-link">rapid::class_rapid()</a></code> object). The generated files will follow and encourage best practices, and will serve as the core around which the rest of a package would be built.</li>
+<li>Also generate a <code>tests/testthat/*.R</code> file for that generated function.</li>
+<li>Generate <code>R/*.R</code> and <code>tests/testthat/*.R</code> files to authenticate the user (using API keys).</li>
+<li>Produce a vignette about configuring authentication. Folded into the main vignette since it’s suprisingly straightforward.</li>
 </ul>
 </li>
 <li>
 <label><input type="checkbox" checked><strong>0.2.0: OAS definition discovery.</strong></label>
-<ul class="task-list">
-<li><label><input type="checkbox" checked>Add support for APIs using the OAS json format.</label></li>
-<li>
-<label><input type="checkbox" checked>Streamline discovery of API definitions (with associated error handling).</label>
+<ul>
+<li>Add support for APIs using the OAS json format.</li>
+<li>Streamline discovery of API definitions (with associated error handling).
 <ul>
 <li>
 <strong>UPDATE:</strong> This functionality is in a separate package, <a href="https://anyapi.api2r.org" class="external-link">{anyapi}</a>.</li>
@@ -120,11 +119,11 @@
 </li>
 <li>
 <label><input type="checkbox" checked><strong>0.3.0: Endpoint function scaffolding.</strong></label>
-<ul class="task-list">
-<li><label><input type="checkbox" checked>Generate R/<em>.R and tests/testthat/</em>.R files for all endpoints (“paths”) described in the given API specification.</label></li>
-<li><label><input type="checkbox" checked>The generated functions will work, but error checking, documentation, and tests will be minimal.</label></li>
+<ul>
+<li>Generate R/<em>.R and tests/testthat/</em>.R files for all endpoints (“paths”) described in the given API specification.</li>
+<li>The generated functions will work, but error checking, documentation, and tests will be minimal.</li>
 <li>
-<label><input type="checkbox" checked><strong>Potential challenges:</strong> I’ll need to strike a balance here between getting a basic working system and producing something that can be easily expanded later.</label>
+<strong>Potential challenges:</strong> I’ll need to strike a balance here between getting a basic working system and producing something that can be easily expanded later.
 <ul>
 <li>
 <strong>Update:</strong> Also, this likely could go unsaid, but, if the API description is incorrect, the functions will not work as expected. Hopefully their error messages will be helpful for debugging, though!</li>
@@ -134,11 +133,11 @@
 </li>
 <li>
 <label><input type="checkbox" checked><strong>0.4.0: Batching and rate limiting.</strong></label>
-<ul class="task-list">
-<li><label><input type="checkbox" checked>Add documentation for implementing batching and rate-limiting.</label></li>
-<li><label><input type="checkbox" checked>If possible, export functionality to help implement these processes, but standards seem to vary widely.</label></li>
+<ul>
+<li>Add documentation for implementing batching and rate-limiting.</li>
+<li>If possible, export functionality to help implement these processes, but standards seem to vary widely.</li>
 <li>
-<label><input type="checkbox" checked><strong>Potential challenges:</strong> This step will involve more reading and documenting than code, to gather examples of how different APIs implement limits and batching. It’s possible systems will be so different that it will be difficult to summarize them. For example, Slack has two separate batching systems in its API, with some functions moved to the newer system, and others not.</label>
+<strong>Potential challenges:</strong> This step will involve more reading and documenting than code, to gather examples of how different APIs implement limits and batching. It’s possible systems will be so different that it will be difficult to summarize them. For example, Slack has two separate batching systems in its API, with some functions moved to the newer system, and others not.
 <ul>
 <li>
 <strong>UPDATE:</strong> The <a href="https://github.com/r-lib/httr2/" class="external-link">development version of {httr2}</a> has functionality to help with this quite a lot, thankfully! I’m skipping this milestone while that functionality stabilizes (this was previously 0.3.0).</li>
