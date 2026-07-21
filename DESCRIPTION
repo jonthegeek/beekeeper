@@ -28,7 +28,7 @@ Imports:
     rlang (>= 1.1.0),
     rprojroot,
     S7,
-    stbl (>= 0.3.0.9000),
+    stbl (>= 0.3.0.9002),
     stringr,
     testthat,
     tibble,
